@@ -27,14 +27,14 @@ window.AQUART_CONTENT.gamesById["gamejam-work"] = {
   "year": "2026",
   "image": "assets/work-crossvision.jpg",
   "imageAlt": "CROSS VISIONのタイトル画面",
-  "description": "8名チームで2日間制作した、視点切替パズルゲーム。",
+  "description": "SAPPORO GAME CAMP 2026のGame Jamで2日間制作した、視点切替パズルゲーム。",
   "tools": [
     "Unity",
     "C#"
   ],
   "period": "2026/10/10 ～ 2026/10/11（2日間）",
-  "team": "8名",
-  "detail": "SAPPORO GAME CAMP 2026のGame Jam参加作品で、8名チーム・2日間で制作した視点切替パズルです。A/Dキーで移動し、矢印キーでカメラを回すと進む方向が変わります。ドアの近くでSキーを押すと手前へ移動でき、宝箱に触れるとクリアです。担当はアウトゲームまわり（タイトル／リザルト／シーン遷移／フェード／クリア判定）と音響の組み込み、宝箱ギミックなどで、担当スクリプトは11本（ゲーム内で使用8本＋プロト版のみ3本）です。",
+  "team": "",
+  "detail": "SAPPORO GAME CAMP 2026のGame Jam参加作品で、2日間で制作した視点切替パズルです。A/Dキーで移動し、矢印キーでカメラを回すと進む方向が変わります。ドアの近くでSキーを押すと手前へ移動でき、宝箱に触れるとクリアです。担当はアウトゲームまわり（タイトル／リザルト／シーン遷移／フェード／クリア判定）と音響の組み込み、宝箱ギミックなどで、担当スクリプトは11本（ゲーム内で使用8本＋プロト版のみ3本）です。",
   "screenshots": [
     {
       "src": "assets/cross-shot-01.jpg",

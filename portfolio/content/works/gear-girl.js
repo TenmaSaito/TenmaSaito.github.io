@@ -26,13 +26,13 @@ window.AQUART_CONTENT.gamesById["gear-girl"] = {
   "year": "2025",
   "image": "assets/work-geargirl.jpg",
   "imageAlt": "撥条少女のプレイ動画サムネイル",
-  "description": "5人チームで取り組んだ、初の3Dチーム制作作品。",
+  "description": "初めて制作した3Dゲーム作品。",
   "tools": [
     "C",
     "DirectX9"
   ],
   "period": "2025/1/15 ～ 2025/3/19",
-  "team": "5名",
+  "team": "",
   "detail": "C言語とDirectX9を使用した3Dゲームです。プレイ動画では、アームやギミックが登場するゲーム画面をご覧いただけます。",
   "screenshots": [
     {

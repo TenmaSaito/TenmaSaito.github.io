@@ -26,14 +26,14 @@ window.AQUART_CONTENT.gamesById["goricat"] = {
   "year": "2025",
   "image": "assets/work-goricat.jpg",
   "imageAlt": "進め！きんにく！ごりキャット君！のプレイ動画サムネイル",
-  "description": "3人チームで制作した、C言語・DirectX9の2Dゲーム。",
+  "description": "C言語・DirectX9で制作した2Dゲーム。",
   "tools": [
     "C",
     "DirectX9"
   ],
   "period": "2025/3/24 ～ 2025/3/26",
-  "team": "3名",
-  "detail": "3人チームで制作した2Dゲームです。プレイ動画では、プロテインで猫を強化する様子を紹介しています。",
+  "team": "",
+  "detail": "プロテインで猫を強化していく2Dゲームです。プレイ動画では、その様子を紹介しています。",
   "screenshots": [
     {
       "src": "assets/goricat-shot-01.jpg",

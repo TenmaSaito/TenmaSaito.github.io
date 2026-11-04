@@ -33,8 +33,8 @@ window.AQUART_CONTENT.gamesById["mask-tetris"] = {
     "DirectX"
   ],
   "period": "2026/01/30 ～ 2026/02/01（2日間）",
-  "team": "3名",
-  "detail": "Global Game Jam（GGJ Sapporo 2026）で3名チーム・2日間で制作したテトリス系ゲームです。独自ギミックはEキーの「すり抜け即時設置」。操作は、矢印キーで移動、SPACE／左SHIFTで回転、TABでホールド（ミノ保持）、Eですり抜け即時設置で、ゲームオーバー後にランキングが表示されます。担当（齊藤天眞）は表示・管理まわり＋計算基盤で、9組18ファイル・計4,026行（BackGroundManager、HoldController、MessageLog、NextNoticeController、StageMinoManager、TitleLogoController、character、mathUtil、mino）。もう1人のプログラマ SHUMA AIZU は main／game／minocontroller／score／sound／ranking など本体進行側を担当しました。",
+  "team": "",
+  "detail": "Global Game Jam（GGJ Sapporo 2026）で2日間で制作したテトリス系ゲームです。独自ギミックはEキーの「すり抜け即時設置」。操作は、矢印キーで移動、SPACE／左SHIFTで回転、TABでホールド（ミノ保持）、Eですり抜け即時設置で、ゲームオーバー後にランキングが表示されます。担当は表示・管理まわり＋計算基盤で、9組18ファイル・計4,026行（BackGroundManager、HoldController、MessageLog、NextNoticeController、StageMinoManager、TitleLogoController、character、mathUtil、mino）を実装しました。",
   "screenshots": [
     {
       "src": "assets/mask-shot-01.jpg",
