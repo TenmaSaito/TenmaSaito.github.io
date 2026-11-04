@@ -67,6 +67,10 @@ window.AQUART_CONTENT.gamesById["gamejam-work"] = {
   },
   "links": [
     {
+      "label": "作品データ",
+      "url": "https://drive.google.com/drive/folders/1Cv9eZ7G1_FjhgF5_NCnFQTb_CEEn_rn8"
+    },
+    {
       "label": "ソースコード（GitHub）",
       "url": "https://github.com/kenchan99oorer/SapporoGameCamp03"
     },
