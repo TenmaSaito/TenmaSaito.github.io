@@ -7,7 +7,7 @@
 <title>AQUART | 齊藤 天眞 — Game Creator Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Outfit:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
 <style>
 /* ============================================================
    ★ テーマ（一元管理）★
@@ -18,11 +18,12 @@
   color-scheme: light;
   --ink:#07333f; --muted:#356a78; --body-text:#174a59;
   --aqua:#007e9e; --cyan:#006f8a; --accent:#00a8c8;
-  --card:rgba(255,255,255,.66); --card-line:rgba(0,140,175,.26);
+  --card:rgba(255,255,255,.6); --card-line:rgba(0,110,140,.18);
+  --hairline:rgba(7,51,63,.13);
   --header-bg:rgba(255,255,255,.72); --footer-bg:rgba(255,255,255,.48);
   --hero-title:#065a71; --dialog-bg:#f4feff;
-  --chip-bg:rgba(255,255,255,.55); --tag-bg:rgba(23,191,224,.14);
-  --shadow:0 12px 30px rgba(6,90,115,.11);
+  --chip-bg:rgba(255,255,255,.55); --tag-bg:rgba(23,191,224,.12);
+  --shadow:0 1px 2px rgba(7,51,63,.05), 0 10px 28px rgba(6,90,115,.08);
   --page-bg:
     radial-gradient(1100px 520px at 82% -6%, rgba(255,255,255,.62), transparent 60%),
     radial-gradient(900px 600px at 8% 30%, rgba(255,255,255,.32), transparent 65%),
@@ -30,18 +31,19 @@
   --splash-bg:radial-gradient(900px 600px at 50% 118%, #ffffff 0%, #8fe6f4 52%, #35bcd9 100%);
   --water-fill:linear-gradient(180deg, rgba(47,188,217,.55), rgba(0,140,185,.78));
   --bubble-stroke:rgba(0,130,165,.5);
-  --accent-grad:linear-gradient(120deg, #17bfe0, #2fe0c2);
+  --accent-grad:linear-gradient(120deg, #00aed6, #0092b8);
   --focus:#005f7a;
 }
 html[data-theme="dark"]{
   color-scheme: dark;
   --ink:#eaf9ff; --muted:#a8cede; --body-text:#d7f1f8;
   --aqua:#5fd8ef; --cyan:#7fe3f7; --accent:#2fbcd9;
-  --card:rgba(8,52,72,.66); --card-line:rgba(95,216,239,.32);
+  --card:rgba(8,52,72,.58); --card-line:rgba(95,216,239,.22);
+  --hairline:rgba(180,240,255,.14);
   --header-bg:rgba(5,36,52,.78); --footer-bg:rgba(5,36,52,.6);
   --hero-title:#eaf9ff; --dialog-bg:#07303f;
-  --chip-bg:rgba(10,70,95,.55); --tag-bg:rgba(47,188,217,.2);
-  --shadow:0 12px 30px rgba(0,10,20,.32);
+  --chip-bg:rgba(10,70,95,.55); --tag-bg:rgba(47,188,217,.18);
+  --shadow:0 1px 2px rgba(0,10,20,.22), 0 12px 30px rgba(0,10,20,.26);
   --page-bg:
     radial-gradient(1000px 520px at 82% -6%, rgba(47,188,217,.15), transparent 60%),
     radial-gradient(900px 600px at 8% 30%, rgba(18,137,168,.12), transparent 65%),
@@ -49,12 +51,14 @@ html[data-theme="dark"]{
   --splash-bg:radial-gradient(900px 600px at 50% 118%, #1289a8 0%, #0b556b 52%, #04222f 100%);
   --water-fill:linear-gradient(180deg, rgba(95,216,239,.5), rgba(11,85,107,.85));
   --bubble-stroke:rgba(180,240,255,.5);
-  --accent-grad:linear-gradient(120deg, #17bfe0, #2fe0c2);
+  --accent-grad:linear-gradient(120deg, #00aed6, #0092b8);
   --focus:#aeeeff;
 }
 :root{
-  --radius:18px;
-  --font-display:"Michroma","Zen Kaku Gothic New",sans-serif;
+  --radius:16px;
+  --font-display:"Outfit","Michroma","Zen Kaku Gothic New",sans-serif;
+  --font-mono:"Roboto Mono","Zen Kaku Gothic New",monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
   --font-body:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
 }
 *{ box-sizing:border-box; }
@@ -121,7 +125,7 @@ img{ max-width:100%; display:block; }
 .ripple-ring.r2{ animation-delay:1.05s; } .ripple-ring.r3{ animation-delay:2.1s; }
 @keyframes ripple{ 0%{ width:110px; height:110px; opacity:.7; } 100%{ width:500px; height:500px; opacity:0; } }
 .splash-logo{
-  font-family:var(--font-display); font-size:clamp(36px,9vw,78px);
+  font-family:"Michroma","Zen Kaku Gothic New",sans-serif; font-size:clamp(36px,9vw,78px);
   letter-spacing:.2em; text-indent:.2em; color:var(--hero-title); margin:0; font-weight:400; text-align:center;
   text-shadow:0 0 22px rgba(255,255,255,.55);
 }
@@ -132,7 +136,7 @@ img{ max-width:100%; display:block; }
 .splash-load{ width:min(340px,74vw); z-index:3; }
 .splash-load .track{ height:14px; border-radius:99px; overflow:hidden; border:1px solid rgba(255,255,255,.8); background:rgba(255,255,255,.45); }
 .splash-load .fill{ height:100%; width:0%; background:linear-gradient(90deg,#0e9dbd,#17bfe0 55%,#2fe0c2); border-radius:99px; }
-.splash-load .meta{ display:flex; justify-content:space-between; margin-top:9px; font-size:11px; letter-spacing:.28em; color:var(--hero-title); font-family:var(--font-display); }
+.splash-load .meta{ display:flex; justify-content:space-between; margin-top:9px; font-size:11px; letter-spacing:.22em; color:var(--hero-title); font-family:var(--font-mono); }
 .splash-skip{
   position:absolute; bottom:26px; left:50%; transform:translateX(-50%); z-index:4; cursor:pointer;
   font-family:var(--font-body); font-size:11.5px; font-weight:700; letter-spacing:.3em; text-indent:.3em; color:var(--hero-title);
@@ -157,11 +161,11 @@ header.nav{
   background:var(--header-bg); border-bottom:1px solid var(--card-line);
 }
 .nav-in{ max-width:1140px; margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
-.brand{ font-family:var(--font-display); font-size:15px; letter-spacing:.28em; color:var(--ink); text-decoration:none; display:flex; align-items:center; gap:9px; }
+.brand{ font-family:var(--font-display); font-weight:600; font-size:16.5px; letter-spacing:.2em; color:var(--ink); text-decoration:none; display:flex; align-items:center; gap:9px; }
 .brand svg{ width:38px; height:auto; flex:none; }
 .brand small{ display:block; font-family:var(--font-body); font-size:9.5px; letter-spacing:.3em; color:var(--muted); font-weight:700; }
 nav.links{ margin-left:auto; display:flex; gap:2px; flex-wrap:wrap; align-items:center; }
-nav.links a{ color:var(--muted); text-decoration:none; font-size:12.5px; font-weight:700; letter-spacing:.12em; padding:7px 11px; border-radius:99px; transition:color .25s, background .25s; }
+nav.links a{ color:var(--muted); text-decoration:none; font-size:12.5px; font-weight:700; letter-spacing:.12em; padding:7px 11px; border-radius:8px; transition:color .25s, background .25s; }
 nav.links a:hover, nav.links a:focus-visible{ color:var(--ink); background:rgba(23,191,224,.16); }
 #themeToggle{
   display:inline-flex; align-items:center; gap:8px; cursor:pointer; margin-left:8px;
@@ -183,25 +187,26 @@ html[data-theme="dark"] #themeToggle .t-day{ opacity:.45; }
 .depth-meter{ position:fixed; right:16px; top:50%; transform:translateY(-50%); z-index:40; display:flex; flex-direction:column; align-items:center; gap:10px; pointer-events:none; }
 .depth-meter .rail{ width:2px; height:130px; background:rgba(0,120,155,.3); border-radius:2px; position:relative; }
 .depth-meter .rail i{ position:absolute; left:50%; width:11px; height:11px; border-radius:50%; transform:translate(-50%,-50%); top:0%; background:#00a8c8; box-shadow:0 0 7px rgba(255,255,255,.6), 0 0 0 2px rgba(0,150,184,.25); }
-.depth-meter .val{ font-family:var(--font-display); font-size:10px; color:var(--muted); writing-mode:vertical-rl; letter-spacing:.3em; }
+.depth-meter .val{ font-family:var(--font-mono); font-size:10px; color:var(--muted); writing-mode:vertical-rl; letter-spacing:.26em; }
 @media (max-width:820px){ .depth-meter{ display:none; } }
 
 /* ---------- 共通 ---------- */
 main{ position:relative; z-index:2; }
 .wrap{ max-width:1140px; margin:0 auto; padding:0 20px; }
-section{ padding:96px 0 30px; scroll-margin-top:96px; position:relative; }
-.sec-head{ margin-bottom:40px; }
-.sec-head .depth-tag{ font-family:var(--font-display); font-size:11px; letter-spacing:.32em; color:var(--aqua); display:flex; align-items:center; gap:12px; margin:0 0 12px; }
+section{ padding:108px 0 30px; scroll-margin-top:96px; position:relative; }
+.sec-head{ margin-bottom:44px; padding-bottom:24px; border-bottom:1px solid var(--hairline); }
+.sec-head .depth-tag{ font-family:var(--font-display); font-weight:500; font-size:11px; letter-spacing:.26em; color:var(--aqua); display:flex; align-items:center; gap:12px; margin:0 0 14px; }
+.sec-head .depth-tag .sec-num{ font-family:var(--font-mono); font-weight:500; font-size:11.5px; letter-spacing:.12em; color:var(--muted); }
 .sec-head .depth-tag::after{ content:""; height:1px; width:64px; background:linear-gradient(90deg, var(--aqua), transparent); }
-.sec-head h2{ font-size:clamp(27px,4.6vw,42px); margin:0; font-weight:900; line-height:1.3; }
-.sec-head h2 .en{ font-family:var(--font-display); font-weight:400; font-size:.6em; letter-spacing:.16em; color:var(--cyan); margin-left:14px; white-space:nowrap; }
+.sec-head h2{ font-size:clamp(30px,5vw,46px); margin:0; font-weight:900; line-height:1.3; letter-spacing:.01em; }
+.sec-head h2 .en{ font-family:var(--font-display); font-weight:500; font-size:.58em; letter-spacing:.1em; color:var(--cyan); margin-left:14px; white-space:nowrap; }
 .sec-head p{ color:var(--muted); max-width:660px; margin:14px 0 0; }
 .wave-divider{ display:block; width:100%; height:54px; margin-top:64px; }
 .wave-divider path{ fill:rgba(255,255,255,.38); } .wave-divider path.back{ fill:rgba(255,255,255,.22); }
 html[data-theme="dark"] .wave-divider path{ fill:rgba(95,216,239,.16); } html[data-theme="dark"] .wave-divider path.back{ fill:rgba(95,216,239,.09); }
 .sea-wave{ animation:wave-slide-x 11s linear infinite; } .sea-wave.back{ animation-duration:17s; animation-direction:reverse; }
 @keyframes wave-slide-x{ from{ transform:translateX(0); } to{ transform:translateX(-180px); } }
-.reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); transition-delay:var(--d,0s); }
+.reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s var(--ease); transition-delay:var(--d,0s); }
 .reveal.in{ opacity:1; transform:translateY(0); }
 .glass{ background:var(--card); border:1px solid var(--card-line); border-radius:var(--radius); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); box-shadow:var(--shadow); }
 .ripple-dot{ position:absolute; border-radius:50%; pointer-events:none; background:radial-gradient(circle, rgba(255,255,255,.75) 0%, rgba(120,220,245,.3) 45%, transparent 70%); transform:translate(-50%,-50%) scale(0); animation:dot-ripple .7s ease-out forwards; z-index:5; }
@@ -216,9 +221,9 @@ html[data-theme="dark"] .wave-divider path{ fill:rgba(95,216,239,.16); } html[da
 @keyframes ray-sway{ from{ transform:skewX(-14deg) translateX(-9px); opacity:.35; } to{ transform:skewX(-10deg) translateX(11px); opacity:.65; } }
 .hero-grid{ display:grid; grid-template-columns:1.18fr .82fr; gap:28px; align-items:center; }
 @media (max-width:860px){ .hero-grid{ grid-template-columns:1fr; } .hero-whale{ max-width:340px; margin:0 auto; } }
-.hero .kicker{ font-family:var(--font-display); font-size:12px; letter-spacing:.4em; color:var(--cyan); margin:0 0 18px; display:flex; align-items:center; gap:14px; }
+.hero .kicker{ font-family:var(--font-display); font-weight:600; font-size:12.5px; letter-spacing:.3em; color:var(--cyan); margin:0 0 18px; display:flex; align-items:center; gap:14px; }
 .hero .kicker::before{ content:""; width:44px; height:1px; background:var(--cyan); }
-.hero .brand-line{ font-family:var(--font-display); font-size:clamp(15px,2.4vw,20px); letter-spacing:.34em; color:var(--aqua); margin:0 0 10px; }
+.hero .brand-line{ font-family:var(--font-display); font-weight:600; font-size:clamp(16px,2.6vw,22px); letter-spacing:.26em; color:var(--aqua); margin:0 0 10px; }
 .hero h1{ font-size:clamp(38px,7.4vw,68px); line-height:1.32; margin:0; font-weight:900; color:var(--hero-title); text-shadow:0 2px 0 rgba(255,255,255,.35); }
 html[data-theme="dark"] .hero h1{ text-shadow:0 0 28px rgba(47,188,217,.22); }
 .hero h1 .wave-letter{ display:inline-block; animation:letter-float 4.6s ease-in-out infinite; animation-delay:calc(var(--i)*.14s); }
@@ -229,15 +234,15 @@ html[data-theme="dark"] .hero h1{ text-shadow:0 0 28px rgba(47,188,217,.22); }
 .hero .school-line span{ display:block; text-align:left; }
 .hero .lead{ color:var(--muted); max-width:600px; margin:16px 0 0; font-size:15.5px; }
 .hero-cta{ display:flex; gap:14px; flex-wrap:wrap; margin-top:36px; align-items:center; }
-.btn{ position:relative; overflow:hidden; cursor:pointer; display:inline-flex; align-items:center; gap:10px; font-family:var(--font-body); font-weight:900; font-size:15px; letter-spacing:.12em; padding:15px 30px; border-radius:99px; text-decoration:none; transition:transform .25s ease, box-shadow .25s ease; }
+.btn{ position:relative; overflow:hidden; cursor:pointer; display:inline-flex; align-items:center; gap:10px; font-family:var(--font-body); font-weight:900; font-size:15px; letter-spacing:.12em; padding:15px 30px; border-radius:14px; text-decoration:none; transition:transform .25s var(--ease), box-shadow .25s ease; }
 .btn:active{ transform:scale(.97); }
-.btn-primary{ color:#043947; background:var(--accent-grad); border:none; box-shadow:0 6px 20px rgba(0,165,200,.22); }
-.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 26px rgba(0,165,200,.28); }
+.btn-primary{ color:#043947; background:var(--accent-grad); border:none; box-shadow:0 4px 14px rgba(0,150,190,.18); }
+.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,150,190,.22); }
 .btn-primary .tri{ animation:blink-soft 1.6s steps(2) infinite; }
-.btn-ghost{ color:var(--ink); background:var(--chip-bg); border:1px solid var(--card-line); backdrop-filter:blur(8px); }
+.btn-ghost{ color:var(--ink); background:var(--card); border:1px solid var(--card-line); backdrop-filter:blur(8px); }
 .btn-ghost:hover{ transform:translateY(-3px); }
 .hero-chips{ display:flex; gap:9px; flex-wrap:wrap; margin-top:34px; }
-.chip{ font-size:12.5px; font-weight:700; letter-spacing:.08em; color:var(--ink); border:1px solid var(--card-line); background:var(--chip-bg); padding:7px 15px; border-radius:99px; }
+.chip{ font-size:12.5px; font-weight:700; letter-spacing:.08em; color:var(--ink); border:1px solid var(--card-line); background:var(--chip-bg); padding:7px 14px; border-radius:8px; }
 .hero-whale{ position:relative; text-align:center; }
 .hero-whale .whale-stage{
   position:relative; border-radius:50%; aspect-ratio:1; max-width:360px; margin:0 auto;
@@ -247,7 +252,7 @@ html[data-theme="dark"] .hero h1{ text-shadow:0 0 28px rgba(47,188,217,.22); }
 }
 html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(circle at 50% 32%, rgba(95,216,239,.3), rgba(11,85,107,.4) 60%, rgba(4,34,47,.5)); }
 .hero-whale svg.whale{ width:78%; height:auto; }
-.hero-whale .whale-cap{ margin-top:16px; font-family:var(--font-display); font-size:11px; letter-spacing:.3em; color:var(--aqua); }
+.hero-whale .whale-cap{ margin-top:16px; font-family:var(--font-display); font-weight:500; font-size:11px; letter-spacing:.24em; color:var(--aqua); }
 /* ---------- ヒーローの一押し作品（ボタン／チップの下・横幅いっぱい） ---------- */
 .hero-featured{
   display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,.95fr); gap:0;
@@ -255,37 +260,37 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
   font-family:var(--font-body); color:var(--ink);
   background:var(--card); border:1px solid var(--card-line); border-radius:var(--radius);
   backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); box-shadow:var(--shadow);
-  overflow:hidden; transition:transform .3s cubic-bezier(.2,.7,.2,1), border-color .3s, box-shadow .3s;
+  overflow:hidden; transition:transform .3s var(--ease), border-color .3s, box-shadow .3s;
 }
-.hero-featured:hover{ transform:translateY(-3px); border-color:rgba(0,140,175,.45); box-shadow:0 16px 36px rgba(6,90,115,.16); }
+.hero-featured:hover{ transform:translateY(-3px); border-color:rgba(0,140,175,.4); box-shadow:0 2px 4px rgba(7,51,63,.05), 0 14px 30px rgba(6,90,115,.11); }
 .hero-featured:focus-visible{ outline:3px solid var(--focus); outline-offset:3px; }
 .hero-featured-media{ position:relative; display:block; min-height:100%; aspect-ratio:16/9; overflow:hidden; background:rgba(7,51,63,.12); }
-.hero-featured-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.2,.7,.2,1); }
+.hero-featured-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease); }
 .hero-featured:hover .hero-featured-media img{ transform:scale(1.03); }
 .hero-featured-badge{
   position:absolute; z-index:2; top:12px; left:12px;
   font-size:12px; font-weight:900; letter-spacing:.14em;
   color:#043947; background:var(--accent-grad);
-  padding:8px 15px; border-radius:99px; box-shadow:0 6px 16px rgba(0,165,200,.28);
+  padding:8px 14px; border-radius:8px; box-shadow:0 4px 12px rgba(0,150,190,.22);
 }
 .hero-featured-body{ display:flex; flex-direction:column; justify-content:center; gap:9px; padding:26px 28px 28px; min-width:0; }
-.hero-featured-cap{ font-family:var(--font-display); font-size:11px; letter-spacing:.28em; color:var(--aqua); margin:0; }
+.hero-featured-cap{ font-family:var(--font-display); font-weight:500; font-size:11px; letter-spacing:.22em; color:var(--aqua); margin:0; }
 .hero-featured-title{ font-size:clamp(24px,3.4vw,32px); font-weight:900; line-height:1.4; margin:0; }
 .hero-featured-sub{ font-size:13.5px; font-weight:700; letter-spacing:.06em; color:var(--aqua); margin:0; }
 .hero-featured-desc{ font-size:14.5px; line-height:1.8; color:var(--body-text); margin:0; }
-.hero-featured-meta{ font-size:12px; font-weight:700; letter-spacing:.06em; color:var(--muted); margin:0; }
+.hero-featured-meta{ font-family:var(--font-mono); font-size:12px; font-weight:500; letter-spacing:.08em; color:var(--muted); margin:0; }
 .hero-featured-cta{
   align-self:flex-start; margin-top:6px;
   font-size:13.5px; font-weight:900; letter-spacing:.08em; color:#043947;
-  background:var(--accent-grad); padding:11px 22px; border-radius:99px;
-  box-shadow:0 6px 18px rgba(0,165,200,.22);
+  background:var(--accent-grad); padding:11px 22px; border-radius:10px;
+  box-shadow:0 4px 12px rgba(0,150,190,.18);
 }
 @media (max-width:760px){
   .hero-featured{ grid-template-columns:minmax(0,1fr); margin-top:36px; }
   .hero-featured-media{ aspect-ratio:16/9; min-height:0; }
   .hero-featured-body{ padding:22px 22px 24px; }
 }
-.hero-scroll{ margin-top:40px; display:flex; align-items:center; gap:12px; color:var(--muted); font-size:11px; letter-spacing:.34em; font-family:var(--font-display); }
+.hero-scroll{ margin-top:40px; display:flex; align-items:center; gap:12px; color:var(--muted); font-size:11px; letter-spacing:.26em; font-family:var(--font-display); font-weight:500; }
 .hero-scroll .line{ width:1px; height:44px; background:linear-gradient(180deg, var(--cyan), transparent); animation:scroll-drip 2.2s ease-in-out infinite; transform-origin:top; }
 @keyframes scroll-drip{ 0%{ transform:scaleY(.2); opacity:.3; } 55%{ transform:scaleY(1); opacity:1; } 100%{ transform:scaleY(1); opacity:.25; } }
 </style>
@@ -395,7 +400,7 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
   <section id="works">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="depth-tag">DEPTH −50m / SELECTED WORKS</p>
+        <p class="depth-tag"><span class="sec-num">01</span>DEPTH −50m / SELECTED WORKS</p>
         <h2>つくったゲーム<span class="en">STAGE SELECT</span></h2>
         <p id="worksIntro"></p>
       </div>
@@ -418,7 +423,7 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
   <section id="about">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="depth-tag">DEPTH −120m / ABOUT</p>
+        <p class="depth-tag"><span class="sec-num">02</span>DEPTH −120m / ABOUT</p>
         <h2>自己紹介<span class="en">ABOUT ME</span></h2>
       </div>
       <div class="glass about-card reveal">
@@ -442,7 +447,7 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
   <section id="skills">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="depth-tag">DEPTH −200m / TOOLBOX</p>
+        <p class="depth-tag"><span class="sec-num">03</span>DEPTH −200m / TOOLBOX</p>
         <h2>技術とツール<span class="en">STATUS</span></h2>
         <p>使ってきた技術と、できること。数値はレベルではなく、実際の経験期間ベースで表示しています。</p>
       </div>
@@ -458,7 +463,7 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
   <section id="internship">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="depth-tag">DEPTH −280m / INTERNSHIP</p>
+        <p class="depth-tag"><span class="sec-num">04</span>DEPTH −280m / INTERNSHIP</p>
         <h2>インターン参加経験<span class="en">FIELD LOG</span></h2>
         <p>実際の開発現場で学んだ、大切な経験です。</p>
       </div>
@@ -474,7 +479,7 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
   <section id="events">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="depth-tag">DEPTH −350m / ACTIVITY LOG</p>
+        <p class="depth-tag"><span class="sec-num">05</span>DEPTH −350m / ACTIVITY LOG</p>
         <h2>参加・出展イベント<span class="en">DIVE LOG</span></h2>
         <p>制作の外に広がる活動の記録です。</p>
       </div>
@@ -490,7 +495,7 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
   <section id="contact" style="padding-bottom:20px;">
     <div class="wrap">
       <div class="sec-head reveal" style="text-align:center;">
-        <p class="depth-tag" style="justify-content:center;">DEPTH −400m / CONTACT</p>
+        <p class="depth-tag" style="justify-content:center;"><span class="sec-num">06</span>DEPTH −400m / CONTACT</p>
         <h2>連絡先<span class="en">CONTACT</span></h2>
       </div>
       <div class="contact-cards" id="contactCards"></div>
@@ -524,24 +529,24 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
 
 <style>
 /* ---------- Works ---------- */
-.works-overview{ font-size:13px; font-weight:900; letter-spacing:.1em; color:var(--aqua); margin:0 0 14px; }
-.filters{ display:flex; gap:9px; flex-wrap:wrap; margin-bottom:24px; }
+.works-overview{ font-family:var(--font-mono); font-size:12.5px; font-weight:500; letter-spacing:.14em; color:var(--aqua); margin:0 0 16px; }
+.filters{ display:flex; gap:9px; flex-wrap:wrap; margin-bottom:26px; }
 .filters button{
   cursor:pointer; font-family:var(--font-body); font-size:13px; font-weight:900; letter-spacing:.1em;
-  padding:9px 20px; border-radius:99px; color:var(--muted);
+  padding:9px 20px; border-radius:10px; color:var(--muted);
   background:var(--chip-bg); border:1px solid var(--card-line); transition:all .25s;
 }
 .filters button[aria-pressed="true"]{ color:#043947; background:var(--accent-grad); border-color:transparent; }
-.works-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-@media (max-width:1020px){ .works-grid{ grid-template-columns:1fr 1fr; gap:16px; } }
-@media (max-width:660px){ .works-grid{ grid-template-columns:1fr; gap:16px; } }
+.works-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+@media (max-width:1020px){ .works-grid{ grid-template-columns:1fr 1fr; gap:18px; } }
+@media (max-width:660px){ .works-grid{ grid-template-columns:1fr; gap:18px; } }
 .work-card{
   position:relative; overflow:hidden; display:flex; flex-direction:column;
   border-radius:var(--radius); border:1px solid var(--card-line);
   background:var(--card); backdrop-filter:blur(12px); box-shadow:var(--shadow);
-  transition:transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s, box-shadow .35s;
+  transition:transform .35s var(--ease), border-color .35s, box-shadow .35s;
 }
-.work-card:hover{ transform:translateY(-4px); border-color:rgba(0,140,175,.45); box-shadow:0 14px 32px rgba(6,90,115,.15); }
+.work-card:hover{ transform:translateY(-4px); border-color:rgba(0,140,175,.4); box-shadow:0 2px 4px rgba(7,51,63,.05), 0 14px 30px rgba(6,90,115,.11); }
 .work-card::after{ content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(115deg, transparent 32%, rgba(255,255,255,.22) 48%, transparent 62%); transform:translateX(-110%); transition:transform .8s ease; }
 .work-card:hover::after{ transform:translateX(110%); }
 /* ---------- 一押し（FEATURED）カード：作品欄の先頭に横幅いっぱいで大きく ---------- */
@@ -556,7 +561,7 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
   position:absolute; z-index:3; top:12px; left:12px;
   font-size:12px; font-weight:900; letter-spacing:.14em;
   color:#043947; background:var(--accent-grad); border:none;
-  padding:8px 15px; border-radius:99px; box-shadow:0 6px 16px rgba(0,165,200,.28);
+  padding:8px 14px; border-radius:8px; box-shadow:0 4px 12px rgba(0,150,190,.22);
 }
 .work-card--featured .stage-badge{ top:52px; }
 @media (max-width:760px){
@@ -565,7 +570,7 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
   .work-card--featured .work-body{ padding:22px 24px 24px; }
 }
 .work-media{ position:relative; aspect-ratio:16/10; overflow:hidden; flex:none; background:rgba(7,51,63,.12); border:0; padding:0; cursor:pointer; font-family:inherit; width:100%; display:block; }
-.work-media img{ width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.2,.7,.2,1); }
+.work-media img{ width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease); }
 .work-card:hover .work-media img{ transform:scale(1.05); }
 .work-placeholder{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; color:var(--muted); font-weight:900; letter-spacing:.14em; font-size:12px; background:var(--tag-bg); }
 .work-placeholder b{ font-family:var(--font-display); font-size:10px; letter-spacing:.26em; color:var(--aqua); }
@@ -573,26 +578,26 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
 .work-title-btn:hover{ text-decoration:underline; text-underline-offset:4px; }
 .stage-badge{
   position:absolute; z-index:2; top:12px; left:12px;
-  font-family:var(--font-display); font-size:10.5px; letter-spacing:.2em;
-  background:rgba(255,255,255,.92); border:1px solid rgba(0,140,175,.35); color:#00708f;
-  padding:6px 12px; border-radius:8px;
+  font-family:var(--font-mono); font-size:10.5px; font-weight:500; letter-spacing:.16em;
+  background:rgba(255,255,255,.92); border:1px solid rgba(0,140,175,.3); color:#00708f;
+  padding:6px 11px; border-radius:6px;
 }
 .cat-badge{
   position:absolute; z-index:2; top:12px; right:12px;
-  font-size:11px; font-weight:900; letter-spacing:.12em; padding:6px 12px; border-radius:8px;
-  background:#00a8c8; color:#fff; box-shadow:0 3px 12px rgba(0,150,184,.25);
+  font-family:var(--font-mono); font-size:11px; font-weight:500; letter-spacing:.1em; padding:6px 11px; border-radius:6px;
+  background:#00a8c8; color:#fff; box-shadow:0 2px 8px rgba(0,150,184,.2);
 }
 .work-body{ padding:16px 18px 18px; display:flex; flex-direction:column; gap:7px; flex:1; }
 .work-body h3{ margin:0; font-size:17px; line-height:1.45; font-weight:900; }
 .work-body .subtitle{ margin:0; font-size:11.5px; letter-spacing:.08em; color:var(--aqua); font-weight:700; }
 .work-body .desc{ margin:0; font-size:13.5px; line-height:1.65; color:var(--body-text); }
-.work-body .period{ margin:0; font-size:11.5px; color:var(--muted); font-weight:700; letter-spacing:.04em; }
+.work-body .period{ margin:0; font-family:var(--font-mono); font-size:11.5px; color:var(--muted); font-weight:500; letter-spacing:.05em; }
 .tags{ display:flex; flex-wrap:wrap; gap:7px; margin-top:auto; padding-top:6px; }
-.tag{ font-size:11.5px; font-weight:700; letter-spacing:.06em; color:var(--cyan); border:1px solid var(--card-line); background:var(--tag-bg); padding:4px 11px; border-radius:99px; }
+.tag{ font-family:var(--font-mono); font-size:11.5px; font-weight:500; letter-spacing:.05em; color:var(--cyan); border:1px solid var(--card-line); background:var(--tag-bg); padding:4px 10px; border-radius:6px; }
 .work-actions{ display:flex; gap:9px; padding-top:8px; flex-wrap:wrap; }
 .work-actions button, .work-actions a{
   flex:1; min-width:100px; text-align:center; font-size:13px; font-weight:900; letter-spacing:.08em;
-  padding:11px 8px; border-radius:11px; text-decoration:none; cursor:pointer; font-family:var(--font-body);
+  padding:11px 8px; border-radius:9px; text-decoration:none; cursor:pointer; font-family:var(--font-body);
   border:1px solid var(--card-line); color:var(--ink); background:var(--chip-bg); transition:background .25s, border-color .25s;
 }
 .work-actions button{ background:var(--accent-grad); color:#043947; border:none; }
@@ -601,7 +606,7 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
 .work-card:not(.work-card--featured) .stage-badge{ top:10px; left:10px; font-size:10px; padding:5px 10px; }
 .work-card:not(.work-card--featured) .cat-badge{ top:10px; right:10px; font-size:10.5px; padding:5px 10px; }
 .work-card:not(.work-card--featured) .tags{ gap:6px; padding-top:4px; }
-.work-card:not(.work-card--featured) .tag{ font-size:11px; padding:3px 9px; }
+.work-card:not(.work-card--featured) .tag{ font-size:11px; padding:3px 8px; }
 .work-card:not(.work-card--featured) .work-actions{ gap:7px; padding-top:5px; }
 .work-card:not(.work-card--featured) .work-actions button,
 .work-card:not(.work-card--featured) .work-actions a{
@@ -622,7 +627,7 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
 .source-links{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
 .source-links a{
   font-size:13px; font-weight:700; text-decoration:none; color:var(--cyan);
-  border:1px solid var(--card-line); background:var(--chip-bg); padding:8px 15px; border-radius:99px;
+  border:1px solid var(--card-line); background:var(--chip-bg); padding:8px 14px; border-radius:8px;
 }
 .source-links a:hover{ background:rgba(23,191,224,.2); }
 
@@ -630,10 +635,10 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
 .about-card{ padding:28px 32px 30px; }
 .about-top{
   display:grid; grid-template-columns:128px minmax(0,1fr); gap:10px 30px; align-items:start;
-  padding-bottom:22px; border-bottom:1px dashed var(--card-line);
+  padding-bottom:22px; border-bottom:1px solid var(--hairline);
 }
 .about-side{ display:flex; flex-direction:column; align-items:flex-start; gap:14px; }
-.about-side h3{ margin:0; padding-top:4px; font-size:14px; letter-spacing:.24em; font-family:var(--font-display); color:var(--aqua); font-weight:400; }
+.about-side h3{ margin:0; padding-top:4px; font-size:14.5px; letter-spacing:.18em; font-family:var(--font-display); color:var(--aqua); font-weight:600; }
 .about-whale{ width:112px; flex:none; line-height:0; }
 .about-whale svg{ width:100%; height:auto; display:block; }
 /* プロフィール項目：横並びグリッドでコンパクトに（長い項目は広い列／広幅では2列分） */
@@ -655,7 +660,7 @@ dl.facts{ margin:0; text-align:left; }
   .about-facts{ grid-template-columns:minmax(0,1fr); gap:0; }
   .about-main{ padding-top:18px; }
 }
-.fact-row{ display:flex; justify-content:space-between; gap:14px; padding:11px 0; border-bottom:1px dashed var(--card-line); font-size:14.5px; }
+.fact-row{ display:flex; justify-content:space-between; gap:14px; padding:11px 0; border-bottom:1px solid var(--hairline); font-size:14.5px; }
 .fact-row:last-child{ border-bottom:none; }
 .fact-row dt{ color:var(--muted); flex:none; }
 .fact-row dd{ margin:0; font-weight:700; text-align:right; white-space:pre-line; }
@@ -667,22 +672,22 @@ dl.facts{ margin:0; text-align:left; }
 .about-facts .fact-row dd{ text-align:left; line-height:1.7; overflow-wrap:anywhere; }
 
 /* ---------- Skills（ステータス風・経験年数ベース） ---------- */
-.skills-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.skills-grid{ display:grid; grid-template-columns:1fr 1fr; gap:26px; }
 @media (max-width:760px){ .skills-grid{ grid-template-columns:1fr; } }
 .skill{ padding:26px 28px; position:relative; overflow:hidden; }
 .skill-top{ display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
 .skill-top h3{ margin:0; font-size:20px; font-weight:900; }
-.skill-top .cat{ font-size:11px; letter-spacing:.18em; color:var(--aqua); font-weight:700; }
+.skill-top .cat{ font-family:var(--font-display); font-size:11px; letter-spacing:.14em; color:var(--aqua); font-weight:600; }
 .exp-badge{
-  margin-left:auto; font-family:var(--font-display); font-size:12px; color:var(--cyan); white-space:nowrap;
-  border:1px solid var(--card-line); background:var(--tag-bg); padding:6px 13px; border-radius:99px;
+  margin-left:auto; font-family:var(--font-mono); font-size:11.5px; font-weight:500; letter-spacing:.08em; color:var(--cyan); white-space:nowrap;
+  border:1px solid var(--card-line); background:var(--tag-bg); padding:6px 12px; border-radius:6px;
 }
-.exp-badge b{ font-size:18px; font-weight:400; }
+.exp-badge b{ font-size:16px; font-weight:500; }
 .exp-track{ display:flex; gap:5px; margin:16px 0 6px; }
 .exp-track i{ height:9px; flex:1; border-radius:99px; background:rgba(7,70,88,.13); border:1px solid var(--card-line); }
 html[data-theme="dark"] .exp-track i{ background:rgba(255,255,255,.1); }
-.exp-track i.on{ background:linear-gradient(90deg,#5fd8ef,#17bfe0 55%,#2fe0c2); border-color:transparent; }
-html[data-theme="dark"] .exp-track i.on{ background:linear-gradient(90deg,#5fd8ef,#17bfe0 55%,#2fe0c2); border-color:transparent; }
+.exp-track i.on{ background:linear-gradient(90deg,#5fd8ef,#00a8c8); border-color:transparent; }
+html[data-theme="dark"] .exp-track i.on{ background:linear-gradient(90deg,#5fd8ef,#00a8c8); border-color:transparent; }
 .exp-note{ font-size:11.5px; color:var(--muted); margin:0 0 12px; letter-spacing:.06em; }
 .skill p{ margin:0 0 8px; font-size:14px; color:var(--body-text); }
 .skill .skill-env{ font-size:13px; color:var(--muted); }
@@ -690,7 +695,7 @@ html[data-theme="dark"] .exp-track i.on{ background:linear-gradient(90deg,#5fd8e
 .skill-games{ margin:0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:8px; }
 .skill-games a{
   font-size:12.5px; font-weight:700; text-decoration:none; color:var(--cyan);
-  border:1px solid var(--card-line); background:var(--chip-bg); padding:5px 12px; border-radius:99px;
+  border:1px solid var(--card-line); background:var(--chip-bg); padding:5px 12px; border-radius:8px;
 }
 
 /* ---------- Internship ---------- */
@@ -703,10 +708,10 @@ html[data-theme="dark"] .exp-track i.on{ background:linear-gradient(90deg,#5fd8e
 .intern-head{ display:flex; align-items:flex-start; gap:16px; flex-wrap:wrap; }
 .intern-head h3{ margin:0; font-size:clamp(23px,3.6vw,32px); font-weight:900; line-height:1.4; }
 .intern-period{
-  margin-left:auto; font-size:12.5px; font-weight:900; letter-spacing:.1em; color:#043947;
-  background:var(--accent-grad); padding:8px 16px; border-radius:99px; white-space:nowrap;
+  margin-left:auto; font-family:var(--font-mono); font-size:12px; font-weight:500; letter-spacing:.08em; color:#043947;
+  background:var(--accent-grad); padding:8px 14px; border-radius:8px; white-space:nowrap;
 }
-.intern-title{ font-family:var(--font-display); font-size:13px; letter-spacing:.18em; color:var(--cyan); margin:14px 0 0; }
+.intern-title{ font-family:var(--font-display); font-weight:600; font-size:13.5px; letter-spacing:.12em; color:var(--cyan); margin:14px 0 0; }
 .intern-card .intern-desc{ font-size:16px; color:var(--body-text); margin:16px 0 0; max-width:760px; }
 .intern-role{ margin-top:22px; padding:20px 22px; border-radius:14px; background:var(--tag-bg); border:1px solid var(--card-line); }
 .intern-role h4{ margin:0 0 6px; font-size:12px; letter-spacing:.22em; color:var(--aqua); }
@@ -723,30 +728,30 @@ html[data-theme="dark"] .exp-track i.on{ background:linear-gradient(90deg,#5fd8e
 .tl-item{ position:relative; padding:24px 28px; }
 .tl-item::before{ content:""; position:absolute; left:-33px; top:30px; width:13px; height:13px; border-radius:50%; background:#fff; border:2.5px solid #00a8c8; box-shadow:0 0 8px rgba(255,255,255,.5); }
 .tl-item .tl-meta{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:7px; }
-.tl-item .depth{ font-size:11px; font-weight:700; letter-spacing:.14em; color:#fff; background:var(--aqua); padding:3px 10px; border-radius:99px; }
-.tl-item .type{ font-family:var(--font-display); font-size:11px; letter-spacing:.24em; color:var(--cyan); }
+.tl-item .depth{ font-family:var(--font-mono); font-size:11px; font-weight:500; letter-spacing:.1em; color:#fff; background:var(--aqua); padding:3px 10px; border-radius:6px; }
+.tl-item .type{ font-family:var(--font-display); font-weight:500; font-size:11px; letter-spacing:.18em; color:var(--cyan); }
 .tl-item h3{ margin:0 0 6px; font-size:18px; font-weight:900; }
 .tl-item p{ margin:0 0 8px; font-size:14.5px; color:var(--muted); }
 .tl-item a{ font-size:13.5px; font-weight:700; }
 
 /* ---------- Contact ---------- */
-.contact-cards{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.contact-cards{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
 @media (max-width:760px){ .contact-cards{ grid-template-columns:1fr; } }
 .contact-card{ padding:28px; text-decoration:none; color:var(--ink); display:block; position:relative; overflow:hidden; transition:transform .3s ease, border-color .3s ease; }
 a.contact-card:hover{ transform:translateY(-5px); }
-.contact-card .c-label{ font-family:var(--font-display); font-size:11px; letter-spacing:.3em; color:var(--aqua); margin:0 0 10px; }
+.contact-card .c-label{ font-family:var(--font-display); font-weight:500; font-size:11px; letter-spacing:.24em; color:var(--aqua); margin:0 0 10px; }
 .contact-card .c-value{ font-size:16.5px; font-weight:900; margin:0; word-break:break-all; }
 .contact-card .c-note{ font-size:13px; color:var(--muted); margin:8px 0 0; }
 .copy-btn{
   margin-top:14px; cursor:pointer; font-family:var(--font-body); font-size:12.5px; font-weight:900; letter-spacing:.08em;
-  padding:9px 18px; border-radius:99px; color:#043947; background:var(--accent-grad); border:none;
+  padding:9px 18px; border-radius:10px; color:#043947; background:var(--accent-grad); border:none;
 }
 .contact-note{ text-align:center; color:var(--muted); font-size:14px; margin:30px auto 0; max-width:560px; }
 
 /* ---------- Footer ---------- */
 footer{ position:relative; z-index:2; margin-top:90px; padding:44px 20px 54px; text-align:center; border-top:1px solid var(--card-line); background:var(--footer-bg); }
 footer .f-whale{ width:64px; height:auto; margin:0 auto 8px; }
-footer .f-logo{ font-family:var(--font-display); letter-spacing:.34em; text-indent:.34em; font-size:14px; color:var(--ink); margin:0 0 10px; }
+footer .f-logo{ font-family:var(--font-display); font-weight:600; letter-spacing:.26em; text-indent:.26em; font-size:15px; color:var(--ink); margin:0 0 10px; }
 footer p{ color:var(--muted); font-size:12.5px; margin:0 0 6px; }
 footer a{ font-weight:700; text-decoration:none; }
 
@@ -764,22 +769,22 @@ dialog#workDialog::backdrop{ background:rgba(3,32,44,.62); backdrop-filter:blur(
 .work-switcher{ display:flex; align-items:center; gap:10px; margin-right:auto; }
 .work-switcher button, .close-btn{
   cursor:pointer; font-family:var(--font-body); font-size:12.5px; font-weight:900; letter-spacing:.06em;
-  padding:9px 15px; border-radius:99px; border:1px solid var(--card-line); color:var(--ink); background:var(--chip-bg);
+  padding:9px 15px; border-radius:10px; border:1px solid var(--card-line); color:var(--ink); background:var(--chip-bg);
 }
 .work-switcher button:disabled{ opacity:.4; cursor:default; }
-.work-switcher span{ font-family:var(--font-display); font-size:11.5px; color:var(--muted); }
+.work-switcher span{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:.08em; color:var(--muted); }
 .close-btn{ background:var(--accent-grad); color:#043947; border:none; }
 /* 一覧に戻る：閉じる（グラデーション）や前後ナビ（チップ）と見分けがつくよう、アクアの枠線ボタンにする */
 .back-list-btn{
   cursor:pointer; font-family:var(--font-body); font-size:12.5px; font-weight:900; letter-spacing:.06em;
-  min-height:44px; padding:10px 18px; border-radius:99px;
+  min-height:44px; padding:10px 18px; border-radius:10px;
   border:1.5px solid var(--accent); color:var(--cyan); background:var(--tag-bg);
   display:inline-flex; align-items:center; gap:8px; transition:background .25s;
 }
 .back-list-btn:hover{ background:rgba(23,191,224,.28); }
 #dialogContent{ padding:26px 28px 34px; overflow-x:clip; }
 @media (max-width:600px){ #dialogContent{ padding:20px 18px 28px; } }
-#dialogContent .d-eyebrow{ font-family:var(--font-display); font-size:11px; letter-spacing:.26em; color:var(--aqua); margin:0 0 8px; }
+#dialogContent .d-eyebrow{ font-family:var(--font-mono); font-size:11px; font-weight:500; letter-spacing:.18em; color:var(--aqua); margin:0 0 8px; }
 #dialogContent h2{ margin:0 0 18px; font-size:clamp(23px,4vw,32px); line-height:1.4; }
 .d-layout{ display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr); gap:24px; }
 /* グリッドの子が内容物の最小幅で列を押し広げないようにする（見切れ防止の要） */
@@ -795,10 +800,11 @@ dialog#workDialog::backdrop{ background:rgba(3,32,44,.62); backdrop-filter:blur(
 .d-summary p{ margin:0 0 14px; font-size:14.5px; color:var(--body-text); }
 .d-facts{ margin:0 0 16px; }
 .d-facts .fact-row{ font-size:13.5px; }
+.d-facts .fact-row dd{ font-family:var(--font-mono); font-weight:500; letter-spacing:.03em; }
 .d-facts .fact-row dd{ min-width:0; overflow-wrap:anywhere; }
 .d-links{ display:flex; flex-wrap:wrap; gap:9px; margin-top:14px; }
 .d-links a{
-  font-size:13px; font-weight:900; text-decoration:none; padding:10px 17px; border-radius:99px;
+  font-size:13px; font-weight:900; text-decoration:none; padding:10px 17px; border-radius:10px;
   border:1px solid var(--card-line); color:var(--ink); background:var(--chip-bg);
 }
 .d-links a:first-child{ background:var(--accent-grad); color:#043947; border:none; }
@@ -839,7 +845,7 @@ dialog#workDialog::backdrop{ background:rgba(3,32,44,.62); backdrop-filter:blur(
   display:flex; align-items:center; justify-content:center;
 }
 .media-nav:disabled{ opacity:.4; cursor:default; }
-.media-position{ font-family:var(--font-display); font-size:11.5px; color:var(--muted); letter-spacing:.08em; }
+.media-position{ font-family:var(--font-mono); font-size:11.5px; color:var(--muted); letter-spacing:.08em; }
 .media-caption{ margin:8px 0 0; font-size:12.5px; color:var(--muted); text-align:center; }
 .d-cover{ width:100%; max-width:100%; border-radius:12px; margin-bottom:14px; border:1px solid var(--card-line); }
 
@@ -866,11 +872,11 @@ dialog#workDialog::backdrop{ background:rgba(3,32,44,.62); backdrop-filter:blur(
 .jump-badge{
   display:inline-flex; align-items:center; gap:9px; cursor:pointer; margin-top:12px;
   font-family:var(--font-body); font-size:13.5px; font-weight:900; letter-spacing:.08em;
-  color:#043947; background:var(--accent-grad); border:none; border-radius:99px;
-  padding:11px 20px; min-height:44px; box-shadow:0 5px 16px rgba(0,165,200,.22);
-  transition:transform .25s ease, box-shadow .25s ease;
+  color:#043947; background:var(--accent-grad); border:none; border-radius:10px;
+  padding:11px 20px; min-height:44px; box-shadow:0 4px 12px rgba(0,150,190,.18);
+  transition:transform .25s var(--ease), box-shadow .25s ease;
 }
-.jump-badge:hover{ transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,165,200,.28); }
+.jump-badge:hover{ transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,150,190,.22); }
 .jump-badge .jump-arrow{
   display:inline-flex; align-items:center; justify-content:center; flex:none;
   width:22px; height:22px; border-radius:50%; background:rgba(255,255,255,.85); color:#00708f;
@@ -880,7 +886,7 @@ dialog#workDialog::backdrop{ background:rgba(3,32,44,.62); backdrop-filter:blur(
   display:inline-flex; align-items:center; gap:8px; cursor:pointer; align-self:flex-start;
   font-family:var(--font-body); font-size:12px; font-weight:900; letter-spacing:.07em;
   color:var(--cyan); background:var(--tag-bg); border:1.5px solid var(--accent);
-  border-radius:99px; padding:8px 14px; min-height:38px; text-align:left;
+  border-radius:8px; padding:8px 14px; min-height:38px; text-align:left;
   transition:background .25s, transform .25s;
 }
 .event-badge:hover{ background:rgba(23,191,224,.28); transform:translateY(-1px); }
@@ -957,7 +963,7 @@ html[data-theme="dark"] .pending-badge{ color:#ffe9a8; background:rgba(232,195,7
    パートだけをこのコピーで補います（サイトが真っ白にならないための保険）。
    通常、ここの編集は不要です（編集しても分割ファイルが優先されます）。
    ================================================================ */
-const EMBEDDED_CONFIG = {"profile":{"name":"齊藤 天眞","nameReading":"さいとう てんま","school":"専門学校北海道サイバークリエイターズ大学校","course":"ゲームクリエイター学科","specialization":"ゲームプログラマ専攻","headline":"水のように\n柔軟な発想を！","copy":"AS FLEXIBLE AS WATER!","intro":"制作したゲームや、技術・イベントでの活動を紹介します。","bio":"専門学校北海道サイバークリエイターズ大学校で、ゲームプログラマを専攻しています。C/C++・C#を使用し、これまでに約13本のゲームを制作。ゲームジャムへの参加・イベントでの出展経験あり。\n新技術や他のゲームの面白い表現を積極的に取り入れ、レベルアップをしてきました。","brand":"好きな言葉は「ふっかつのじゅもん」。何度くじけそうになっても、何度だってふっかつして挑戦していきます。","email":"251315@st.yoshida-g.ac.jp","github":"https://github.com/TenmaSaito","chips":["C / C++（1年半）","C#（1年）","DirectX9","Unity","約13本のゲームを制作"]},"worksIntro":{"countLabel":"","description":""},"games":[{"id":"denryu-connection","relatedEventId":"","featured":true,"title":"電流コネクション！","subtitle":"電線をつなげて星を明るくする3Dパズルアクション","category":"3Dゲーム","year":"","image":"assets/work-denryu.jpg","imageAlt":"電流コネクション！のタイトル画面","description":"電線をつなげて星を明るくする3Dパズルアクション。球体上のステージで電線をつなぎ、星に明かりを灯します。","tools":[],"period":"3ヶ月","team":"","detail":"紹介PDFより：電線をつなげて星を明るくする3Dパズルアクション（プレイ人数：1人、制作期間：3ヶ月、制作者：齊藤天眞）。工夫した点として、球体上のステージ設計や判定、プレイヤーとUIの合成、オブジェクト指向を意識したコーディングが挙げられています。詳しい遊び方やアピールポイントは、リンク先の紹介PDF・遊び方PDFをご覧ください。","screenshots":[{"src":"assets/denryu-shot-01.jpg","caption":"タイトル画面"},{"src":"assets/denryu-shot-02.jpg","caption":"チュートリアル"},{"src":"assets/denryu-shot-03.jpg","caption":"ゲーム画面（移動）"},{"src":"assets/denryu-shot-04.jpg","caption":"ゲーム画面（電柱に乗る）"},{"src":"assets/denryu-shot-05.jpg","caption":"ゲーム画面（電線をつなぐ）"},{"src":"assets/denryu-shot-06.jpg","caption":"ランキング"},{"src":"assets/denryu-shot-07.jpg","caption":"結果画面"}],"video":{"youtubeId":"fg_TAnzG8N4","thumbnail":"https://i.ytimg.com/vi/fg_TAnzG8N4/hqdefault.jpg","caption":"電流コネクション！ / プレイ動画（PV）"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1QovomTaEMzcXYkYwVFnusqvgCjHzhZUz"},{"label":"紹介PDF","url":"https://drive.google.com/file/d/1L8gkaxdmC6nFSmHpWqf1N9UjqsFWPlAb/view"},{"label":"遊び方PDF","url":"https://drive.google.com/file/d/108es4HySybvoN70PYY9zWC_43qJhRGgz/view"},{"label":"YouTubeで見る","url":"https://youtu.be/fg_TAnzG8N4"}]},{"id":"hide-and-run","relatedEventId":"","title":"Hide and Run!","subtitle":"隠れて、走り抜ける回避ランナー","category":"2Dゲーム","year":"2026","image":"assets/work-hide.jpg","imageAlt":"Hide and Run!のタイトル画面","description":"赤い障害物に当たると即ゲームオーバー。マウス長押しの『ハイド』で障害物をすり抜けながら、できるだけ長く走り続けることを目指す2D回避ランナー。個人制作。","tools":["Unity","C#"],"period":"","team":"個人制作","detail":"UnityとC#で個人制作した2Dゲームです。赤色の物体に当たると即ゲーム終了。左クリック長押しで潜伏モード（ハイド）になり、その間は赤色の物体に当たらなくなりますが、下部のゲージが減り続けます。ゲージが尽きる前にクリックを離して回復させる、攻めと守りの切り替えがポイントです。紹介動画では、タイトル・ルール説明からプレイ、結果画面までをご覧いただけます。","screenshots":[{"src":"assets/hide-shot-01.jpg","caption":"タイトル画面（紹介動画より）"},{"src":"assets/hide-shot-02.jpg","caption":"ルール説明（紹介動画より）"},{"src":"assets/hide-shot-03.jpg","caption":"ゲーム画面（紹介動画より）"},{"src":"assets/hide-shot-04.jpg","caption":"六角形のラッシュ（紹介動画より）"},{"src":"assets/hide-shot-05.jpg","caption":"ハイド中（紹介動画より）"},{"src":"assets/hide-shot-06.jpg","caption":"結果画面（紹介動画より）"}],"video":{"youtubeId":"W8JSMdlUukg","caption":"Hide and Run! / 紹介動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1bTCKVBzIZf3OdG6KB6Vu_SVN7LeDwsYj"},{"label":"YouTubeで見る","url":"https://youtu.be/W8JSMdlUukg"}]},{"id":"xmas-stealth","relatedEventId":"","title":"クリスマステルス大作戦","subtitle":"初の3Dゲーム作品","category":"3Dゲーム","year":"2025","image":"assets/work-xmas.jpg","imageAlt":"クリスマステルス大作戦のプレイ動画サムネイル","description":"C言語とDirectX9で制作した、初の3Dゲーム作品。","tools":["C","DirectX9"],"period":"2025/11/6 ～ 2025/12/24","team":"","detail":"クリスマスをモチーフにした3Dゲームです。公開プレイ動画で、チュートリアルやゲーム画面をご覧いただけます。","screenshots":[{"src":"assets/xmas-shot-01.jpg","caption":"タイトル画面（プレイ動画より）"},{"src":"assets/xmas-shot-02.jpg","caption":"チュートリアルのゲーム画面（プレイ動画より）"},{"src":"assets/xmas-shot-03.jpg","caption":"基本操作のチュートリアル（プレイ動画より）"},{"src":"assets/xmas-shot-04.jpg","caption":"オーナメントとツリー（プレイ動画より）"},{"src":"assets/xmas-shot-05.jpg","caption":"ゲーム本編（プレイ動画より）"},{"src":"assets/xmas-shot-06.jpg","caption":"結果画面（プレイ動画より）"}],"video":{"youtubeId":"SUQJOdHtpqg","caption":"クリスマステルス大作戦 / プレイ動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1jZpkJw0JxEHW-CpLnkCS39s9V9Ul3zL2"},{"label":"YouTubeで見る","url":"https://youtu.be/SUQJOdHtpqg"}]},{"id":"apprentice-mapmaker","relatedEventId":"","title":"見習い地図士と不思議な世界","subtitle":"2Dゲーム作品","category":"2Dゲーム","year":"2025","image":"assets/work-map.jpg","imageAlt":"見習い地図士と不思議な世界のプレイ動画サムネイル","description":"C言語とDirectX9を使用して制作した2Dゲーム作品。","tools":["C","DirectX9"],"period":"2025/6/30 ～ 2025/9/22","team":"","detail":"2025年6月から9月にかけて制作した2Dゲーム作品です。ゲームの様子は、プレイ動画で紹介しています。","screenshots":[{"src":"assets/map-shot-01.jpg","caption":"タイトル画面"},{"src":"assets/map-shot-02.jpg","caption":"チュートリアル"},{"src":"assets/map-shot-03.jpg","caption":"ゲーム画面1"},{"src":"assets/map-shot-04.jpg","caption":"ゲーム画面2"},{"src":"assets/map-shot-05.jpg","caption":"ランキング"},{"src":"assets/map-shot-06.jpg","caption":"結果画面"}],"video":{"youtubeId":"9B82_kTPxxc","caption":"見習い地図士と不思議な世界 / プレイ動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1tuWMl62xEX0VqR3xQqZHnkmMcXe7kfKW"},{"label":"YouTubeで見る","url":"https://youtu.be/9B82_kTPxxc"}]},{"id":"izayoi-collector","relatedEventId":"","title":"十六夜コレクター","subtitle":"2作目の2Dゲーム作品","category":"2Dゲーム","year":"2025","image":"assets/work-izayoi.jpg","imageAlt":"十六夜コレクターのプレイ動画サムネイル","description":"C言語とDirectX9で制作した、2Dゲーム作品の2作目。","tools":["C","DirectX9"],"period":"2025/10/2 ～ 2025/10/31","team":"","detail":"2025年10月に制作した2Dゲーム作品です。プレイ動画と作品データを公開しています。","screenshots":[{"src":"assets/izayoi-shot-01.jpg","caption":"スクリーンショット1"},{"src":"assets/izayoi-shot-02.jpg","caption":"スクリーンショット2"},{"src":"assets/izayoi-shot-03.jpg","caption":"スクリーンショット3"},{"src":"assets/izayoi-shot-04.jpg","caption":"スクリーンショット4"},{"src":"assets/izayoi-shot-05.jpg","caption":"スクリーンショット5"}],"video":{"youtubeId":"PDFSXxMC6z4","caption":"十六夜コレクター / プレイ動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1s1luAQwW1Wly6N-Ra9-RZrSyvNf_xYp5"},{"label":"YouTubeで見る","url":"https://youtu.be/PDFSXxMC6z4"}]},{"id":"gear-girl","relatedEventId":"","title":"撥条少女","subtitle":"5人チームでの3Dゲーム制作","category":"3Dゲーム","year":"2025","image":"assets/work-geargirl.jpg","imageAlt":"撥条少女のプレイ動画サムネイル","description":"初めて制作した3Dゲーム作品。","tools":["C","DirectX9"],"period":"2025/1/15 ～ 2025/3/19","team":"","detail":"C言語とDirectX9を使用した3Dゲームです。プレイ動画では、アームやギミックが登場するゲーム画面をご覧いただけます。","screenshots":[{"src":"assets/gear-shot-01.jpg","caption":"タイトル画面"},{"src":"assets/gear-shot-02.jpg","caption":"チュートリアル"},{"src":"assets/gear-shot-03.jpg","caption":"アイテム発見"},{"src":"assets/gear-shot-04.jpg","caption":"アイテム取得"},{"src":"assets/gear-shot-05.jpg","caption":"アイテム配置"},{"src":"assets/gear-shot-06.jpg","caption":"会話シーン"},{"src":"assets/gear-shot-07.jpg","caption":"投げるアクション"},{"src":"assets/gear-shot-08.jpg","caption":"エリア表示"},{"src":"assets/gear-shot-09.jpg","caption":"2Pプレイ"},{"src":"assets/gear-shot-10.jpg","caption":"ランキング"}],"video":{"youtubeId":"p8u7Jz-R7Iw","caption":"撥条少女 / プレイ動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/17Ku8LNMrUj245HuN-RsVx44b2mPjsanU"},{"label":"YouTubeで見る","url":"https://youtu.be/p8u7Jz-R7Iw"}]},{"id":"goricat","relatedEventId":"","title":"進め！きんにく！ごりキャット君！","subtitle":"3人チームでの2Dゲーム制作","category":"2Dゲーム","year":"2025","image":"assets/work-goricat.jpg","imageAlt":"進め！きんにく！ごりキャット君！のプレイ動画サムネイル","description":"C言語・DirectX9で制作した2Dゲーム。","tools":["C","DirectX9"],"period":"2025/3/24 ～ 2025/3/26","team":"","detail":"プロテインで猫を強化していく2Dゲームです。プレイ動画では、その様子を紹介しています。","screenshots":[{"src":"assets/goricat-shot-01.jpg","caption":"スクリーンショット1"},{"src":"assets/goricat-shot-02.jpg","caption":"スクリーンショット2"},{"src":"assets/goricat-shot-03.jpg","caption":"スクリーンショット3"},{"src":"assets/goricat-shot-04.jpg","caption":"スクリーンショット4"},{"src":"assets/goricat-shot-05.jpg","caption":"スクリーンショット5"},{"src":"assets/goricat-shot-06.jpg","caption":"スクリーンショット6"}],"video":{"youtubeId":"M9hjYlRG0qI","caption":"進め！きんにく！ごりキャット君！ / プレイ動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1LGjK1nSxxiqTdOPpTo0CNG_2W1_yYju_"},{"label":"YouTubeで見る","url":"https://youtu.be/M9hjYlRG0qI"}]},{"id":"takeru","relatedEventId":"sapporo-game-odyssey","relatedEventLabel":"SAPPORO GAME ODYSSAY 出展","title":"現実逃避だ！タケル君！","subtitle":"初のC++による2Dゲーム","category":"2Dゲーム","year":"2026","image":"assets/work-takeru.jpg","imageAlt":"現実逃避だ！タケル君！のプレイ動画サムネイル","description":"初めてC++を使って制作した2Dゲーム。DirectX9を使用。","tools":["C++","DirectX9"],"period":"2026/5/25 ～ 2026/5/28","team":"","detail":"2026年5月に制作した、初めてC++を使用した2Dゲーム作品です。ゲーム画面と動きをプレイ動画で紹介しています。","screenshots":[{"src":"assets/takeru-shot-01.jpg","caption":"スクリーンショット1"},{"src":"assets/takeru-shot-02.jpg","caption":"スクリーンショット2"},{"src":"assets/takeru-shot-03.jpg","caption":"スクリーンショット3"},{"src":"assets/takeru-shot-04.jpg","caption":"スクリーンショット4"},{"src":"assets/takeru-shot-05.jpg","caption":"スクリーンショット5"}],"video":{"youtubeId":"GLYZmwaaMjU","caption":"現実逃避だ！タケル君！ / プレイ動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1l29CW07WhpXP6jHDhkMvsW7pNBgtpjLI"},{"label":"YouTubeで見る","url":"https://youtu.be/GLYZmwaaMjU"}]},{"id":"gamejam-work","relatedEventId":"sapporo-game-camp","relatedEventLabel":"Game Jam 制作","title":"CROSS VISION","subtitle":"8人チームでの視点切替パズル制作","category":"Game Jam","year":"2026","image":"assets/work-crossvision.jpg","imageAlt":"CROSS VISIONのタイトル画面","description":"SAPPORO GAME CAMP 2026のGame Jamで2日間制作した、視点切替パズルゲーム。","tools":["Unity","C#"],"period":"2026/10/10 ～ 2026/10/11（2日間）","team":"","detail":"SAPPORO GAME CAMP 2026のGame Jam参加作品で、2日間で制作した視点切替パズルです。A/Dキーで移動し、矢印キーでカメラを回すと進む方向が変わります。ドアの近くでSキーを押すと手前へ移動でき、宝箱に触れるとクリアです。担当はアウトゲームまわり（タイトル／リザルト／シーン遷移／フェード／クリア判定）と音響の組み込み、宝箱ギミックなどで、担当スクリプトは11本（ゲーム内で使用8本＋プロト版のみ3本）です。","screenshots":[{"src":"assets/cross-shot-01.jpg","caption":"タイトル画面"},{"src":"assets/cross-shot-02.jpg","caption":"ゲーム開始"},{"src":"assets/cross-shot-03.jpg","caption":"視点切替"},{"src":"assets/cross-shot-04.jpg","caption":"宝箱に到達"},{"src":"assets/cross-shot-05.jpg","caption":"宝箱へ接近"},{"src":"assets/cross-shot-06.jpg","caption":"クリア画面"}],"video":{"youtubeId":"N9NXa1sopA8","caption":"CROSS VISION / 紹介動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1Cv9eZ7G1_FjhgF5_NCnFQTb_CEEn_rn8"},{"label":"ソースコード（GitHub）","url":"https://github.com/kenchan99oorer/SapporoGameCamp03"},{"label":"YouTubeで見る","url":"https://youtu.be/N9NXa1sopA8"}]},{"id":"mask-tetris","relatedEventId":"global-game-jam","relatedEventLabel":"Global Game Jam 制作","title":"MASK TETRIS","subtitle":"すり抜け即時設置が特徴のテトリス","category":"Game Jam","year":"2026","image":"assets/work-mask.jpg","imageAlt":"MASK TETRISのタイトル画面","description":"Global Game Jam（GGJ Sapporo 2026）で制作したテトリス系ゲーム。Eキーでブロックをすり抜けて即時設置できる独自ギミックが特徴。","tools":["C言語","DirectX"],"period":"2026/01/30 ～ 2026/02/01（2日間）","team":"","detail":"Global Game Jam（GGJ Sapporo 2026）で2日間で制作したテトリス系ゲームです。独自ギミックはEキーの「すり抜け即時設置」。操作は、矢印キーで移動、SPACE／左SHIFTで回転、TABでホールド（ミノ保持）、Eですり抜け即時設置で、ゲームオーバー後にランキングが表示されます。担当は表示・管理まわり＋計算基盤で、9組18ファイル・計4,026行（BackGroundManager、HoldController、MessageLog、NextNoticeController、StageMinoManager、TitleLogoController、character、mathUtil、mino）を実装しました。","screenshots":[{"src":"assets/mask-shot-01.jpg","caption":"タイトル画面（カラフルな「MASK TETRIS」ロゴと PRESS START BUTTON、GGJ SAP 2026 表記）"},{"src":"assets/mask-shot-02.jpg","caption":"プレイ序盤（スコア500、Hold は空、Next 表示と仮面のキャラクター）"},{"src":"assets/mask-shot-03.jpg","caption":"プレイ中（スコア1000、赤いミノが落下中、下段にブロックが積み上がり始める）"},{"src":"assets/mask-shot-04.jpg","caption":"ホールド使用中（Hold にオレンジのミノを保持、スコア1000）"},{"src":"assets/mask-shot-05.jpg","caption":"プレイ終盤寄り（ブロックが高く積み上がった状態、スコア1000）"},{"src":"assets/mask-shot-06.jpg","caption":"ゲームオーバー後のランキング画面（スコア一覧 50500 / 33000 / 24500 / 20000 / 20000）"}],"links":[]},{"id":"drift-race","relatedEventId":"","title":"ARC FLOW DRIFT","subtitle":"ツインスティックで滑らせるドリフトレース","category":"Webゲーム","year":"2026","image":"assets/work-drift.jpg","imageAlt":"ARC FLOW DRIFTのゲーム画面","description":"ブラウザで遊べるドリフト特化のレースゲーム。Inertial Drift風のツインスティック操作で車を滑らせ、3つのコースでタイムアタックに挑む。初の完全バイブコーディングによる一人制作。","tools":["C++","SDL2","WebAssembly"],"period":"2026/10/29 ～ 2026/10/31","team":"1名","detail":"学校課題として制作したWebブラウザ向けレースゲームです。C++／SDL2で開発し、WebAssemblyでブラウザ動作に対応。Inertial Driftを参考にしたツインスティック式のドリフト操作、鈴鹿・Flow・Coastの3コース、特性の異なる3車種、ミニマップやラップタイム表示を実装しました。本作は一人制作で、初めての完全バイブコーディング（AIとの対話のみで組み上げる制作手法）への挑戦でした。制作を通して、プロンプトを組む大変さと、考えを言語化して壁打ちを繰り返すことの大切さを学びました。","screenshots":[{"src":"assets/drift-shot-01.jpg","caption":"ゲーム画面（コース走行中、ミニマップとラップタイム表示）"},{"src":"assets/drift-shot-02.jpg","caption":"スタート地点（ゲートと車両、コースマップ表示）"}],"links":[{"label":"ブラウザで遊ぶ","url":"https://tenmasaito.github.io/racegame/"},{"label":"ソースコード（GitHub）","url":"https://github.com/TenmaSaito/ge-i26-racegame-saito"}]}],"sourceProjects":[{"label":"ConnectingVolteccer","url":"https://github.com/TenmaSaito/ConnectingVolteccer"},{"label":"cpp_TKG","url":"https://github.com/TenmaSaito/cpp_TKG"},{"label":"2DActionGame","url":"https://github.com/TenmaSaito/2DActionGame"},{"label":"PunchingHomerun","url":"https://github.com/TenmaSaito/PunchingHomerun"},{"label":"GearGirl","url":"https://github.com/TenmaSaito/GearGirl"},{"label":"XmaStealth","url":"https://github.com/TenmaSaito/XmaStealth"},{"label":"SapporoGameCamp03","url":"https://github.com/kenchan99oorer/SapporoGameCamp03"}],"internships":[{"company":"バンダイナムコスタジオ","period":"参加期間：10日間","title":"C++ / WebAssembly / Android","description":"C++で書いたコードをWebAssembly化し、ブラウザーで動作するよう制作しました。","role":"基底クラスの作成、Androidへの移植。","learnings":["AIを用いたコーディングはプロンプトを正しく渡し、壁打ちを繰り返すことで既に実用的な物を出力すると知った。","GitHub Actionsを用いたCIはコードの確認を自動で行う為、非常に有用だと知った。","Dockerを用いた仮想コンテナ開発による環境統一は、動作のブレが起きないため大切だと知った。"]}],"skillGroups":[{"title":"プログラミング言語","subtitle":"LANGUAGES","items":[{"name":"C / C++","category":"LANGUAGE","experience":"1年半","expSegments":9,"maxSegments":12,"description":"ゲーム制作の主力言語。掲載作品の多くをC / C++とDirectX9で制作しています。","env":"使用IDE：Visual Studio 2019 / VS Code","projects":"DirectX9","languages":["C","C++"]},{"name":"C#","category":"LANGUAGE","experience":"1年","expSegments":6,"maxSegments":12,"description":"Unityでのゲーム制作に使用。ゲームジャムでもC#で開発しました。","env":"使用IDE：Visual Studio 2019","projects":"Unity","languages":["C#"]}]},{"title":"ゲームエンジン","subtitle":"GAMEENGINE","items":[{"name":"Unity","category":"GAMEENGINE","experience":"1年","expSegments":6,"maxSegments":12,"description":"ゲーム制作に必要な操作(オブジェクト配置、スクリプト作成やShader Lab等)はある程度可能で、何本かゲームを作成した経験があります。","env":"使用バージョン：Unity 5 / Unity 2022.3"},{"name":"Unreal Engine","category":"GAMEENGINE","experience":"半年未満","expSegments":2,"maxSegments":12,"description":"絶賛勉強中です。現在はブループリントによる開発勉強ですが、将来的にはVerse言語での開発の勉強をする予定です。","env":"使用バージョン：UE5"}]},{"title":"ツール","subtitle":"TOOL","items":[{"name":"GitHub","category":"TOOL","experience":"1年半","expSegments":9,"maxSegments":12,"description":"ゲーム制作時に使用するバージョン管理ツール。GitHub ActionsによるPRチェックも勉強中です。","env":"使用App：GitHub Desktop/TortoiseGit"}]}],"events":[{"id":"sapporo-game-odyssey","title":"SAPPORO GAME ODYSSAY","type":"出展","depth":"−350m","description":"札幌市地下歩行空間にて、C++で初めて制作した2Dゲームを展示。","url":"https://www.sapporo-game-odyssey.jp/","relatedWorkId":"takeru","jumpLabel":"出展作品を見る"},{"id":"sapporo-game-camp","title":"SAPPORO GAME CAMP","type":"参加","depth":"−370m","description":"2026年度Game Jamに参加。Unity, C#を用いて2日でゲームを作成。","url":"https://sapporo-game-camp.com/2026/","relatedWorkId":"gamejam-work","jumpLabel":"Game Jam作品を見る"},{"id":"global-game-jam","title":"Global Game Jam","type":"参加","depth":"−390m","description":"2026年度Global Game Jamに参加。C言語を用いて2日で2Dゲームを制作","url":"https://www.infiniteloop.co.jp/pr-blog/2026/01/global-game-jam-sapporo-2026/","relatedWorkId":"mask-tetris","jumpLabel":"Game Jam作品を見る"}]};
+const EMBEDDED_CONFIG = {"profile":{"name":"齊藤 天眞","nameReading":"さいとう てんま","school":"専門学校北海道サイバークリエイターズ大学校","course":"ゲームクリエイター学科","specialization":"ゲームプログラマ専攻","headline":"水のように\n柔軟な発想を！","copy":"AS FLEXIBLE AS WATER!","intro":"制作したゲームや、技術・イベントでの活動を紹介します。","bio":"専門学校北海道サイバークリエイターズ大学校で、ゲームプログラマを専攻しています。C/C++・C#を使用し、これまでに約13本のゲームを制作。ゲームジャムへの参加・イベントでの出展経験あり。\n新技術や他のゲームの面白い表現を積極的に取り入れ、レベルアップをしてきました。","brand":"好きな言葉は「ふっかつのじゅもん」。何度くじけそうになっても、何度だってふっかつして挑戦していきます。","email":"251315@st.yoshida-g.ac.jp","github":"https://github.com/TenmaSaito","chips":["C / C++（1年半）","C#（1年）","DirectX9","Unity","約13本のゲームを制作"]},"worksIntro":{"countLabel":"","description":""},"games":[{"id":"denryu-connection","relatedEventId":"","featured":true,"title":"電流コネクション！","subtitle":"電線をつなげて星を明るくする3Dパズルアクション","category":"3Dゲーム","year":"","image":"assets/work-denryu.jpg","imageAlt":"電流コネクション！のタイトル画面","description":"電線をつなげて星を明るくする3Dパズルアクション。球体上のステージで電線をつなぎ、星に明かりを灯します。","tools":[],"period":"3ヶ月","team":"","detail":"紹介PDFより：電線をつなげて星を明るくする3Dパズルアクション（プレイ人数：1人、制作期間：3ヶ月、制作者：齊藤天眞）。工夫した点として、球体上のステージ設計や判定、プレイヤーとUIの合成、オブジェクト指向を意識したコーディングが挙げられています。詳しい遊び方やアピールポイントは、リンク先の紹介PDF・遊び方PDFをご覧ください。","screenshots":[{"src":"assets/denryu-shot-01.jpg","caption":"タイトル画面"},{"src":"assets/denryu-shot-02.jpg","caption":"チュートリアル"},{"src":"assets/denryu-shot-03.jpg","caption":"ゲーム画面（移動）"},{"src":"assets/denryu-shot-04.jpg","caption":"ゲーム画面（電柱に乗る）"},{"src":"assets/denryu-shot-05.jpg","caption":"ゲーム画面（電線をつなぐ）"},{"src":"assets/denryu-shot-06.jpg","caption":"ランキング"},{"src":"assets/denryu-shot-07.jpg","caption":"結果画面"}],"video":{"youtubeId":"fg_TAnzG8N4","thumbnail":"https://i.ytimg.com/vi/fg_TAnzG8N4/hqdefault.jpg","caption":"電流コネクション！ / プレイ動画（PV）"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1QovomTaEMzcXYkYwVFnusqvgCjHzhZUz"},{"label":"紹介PDF","url":"https://drive.google.com/file/d/1L8gkaxdmC6nFSmHpWqf1N9UjqsFWPlAb/view"},{"label":"遊び方PDF","url":"https://drive.google.com/file/d/108es4HySybvoN70PYY9zWC_43qJhRGgz/view"},{"label":"YouTubeで見る","url":"https://youtu.be/fg_TAnzG8N4"}]},{"id":"hide-and-run","relatedEventId":"","title":"Hide and Run!","subtitle":"隠れて、走り抜ける回避ランナー","category":"2Dゲーム","year":"2026","image":"assets/work-hide.jpg","imageAlt":"Hide and Run!のタイトル画面","description":"赤い障害物に当たると即ゲームオーバー。マウス長押しの『ハイド』で障害物をすり抜けながら、できるだけ長く走り続けることを目指す2D回避ランナー。個人制作。","tools":["Unity","C#"],"period":"","team":"個人制作","detail":"UnityとC#で個人制作した2Dゲームです。赤色の物体に当たると即ゲーム終了。左クリック長押しで潜伏モード（ハイド）になり、その間は赤色の物体に当たらなくなりますが、下部のゲージが減り続けます。ゲージが尽きる前にクリックを離して回復させる、攻めと守りの切り替えがポイントです。紹介動画では、タイトル・ルール説明からプレイ、結果画面までをご覧いただけます。","screenshots":[{"src":"assets/hide-shot-01.jpg","caption":"タイトル画面（紹介動画より）"},{"src":"assets/hide-shot-02.jpg","caption":"ルール説明（紹介動画より）"},{"src":"assets/hide-shot-03.jpg","caption":"ゲーム画面（紹介動画より）"},{"src":"assets/hide-shot-04.jpg","caption":"六角形のラッシュ（紹介動画より）"},{"src":"assets/hide-shot-05.jpg","caption":"ハイド中（紹介動画より）"},{"src":"assets/hide-shot-06.jpg","caption":"結果画面（紹介動画より）"}],"video":{"youtubeId":"W8JSMdlUukg","caption":"Hide and Run! / 紹介動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1bTCKVBzIZf3OdG6KB6Vu_SVN7LeDwsYj"},{"label":"YouTubeで見る","url":"https://youtu.be/W8JSMdlUukg"}]},{"id":"xmas-stealth","relatedEventId":"","title":"クリスマステルス大作戦","subtitle":"初の3Dゲーム作品","category":"3Dゲーム","year":"2025","image":"assets/work-xmas.jpg","imageAlt":"クリスマステルス大作戦のプレイ動画サムネイル","description":"C言語とDirectX9で制作した、初の3Dゲーム作品。","tools":["C","DirectX9"],"period":"2025/11/6 ～ 2025/12/24","team":"","detail":"クリスマスをモチーフにした3Dゲームです。公開プレイ動画で、チュートリアルやゲーム画面をご覧いただけます。","screenshots":[{"src":"assets/xmas-shot-01.jpg","caption":"タイトル画面（プレイ動画より）"},{"src":"assets/xmas-shot-02.jpg","caption":"チュートリアルのゲーム画面（プレイ動画より）"},{"src":"assets/xmas-shot-03.jpg","caption":"基本操作のチュートリアル（プレイ動画より）"},{"src":"assets/xmas-shot-04.jpg","caption":"オーナメントとツリー（プレイ動画より）"},{"src":"assets/xmas-shot-05.jpg","caption":"ゲーム本編（プレイ動画より）"},{"src":"assets/xmas-shot-06.jpg","caption":"結果画面（プレイ動画より）"}],"video":{"youtubeId":"SUQJOdHtpqg","caption":"クリスマステルス大作戦 / プレイ動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1jZpkJw0JxEHW-CpLnkCS39s9V9Ul3zL2"},{"label":"YouTubeで見る","url":"https://youtu.be/SUQJOdHtpqg"}]},{"id":"apprentice-mapmaker","relatedEventId":"","title":"見習い地図士と不思議な世界","subtitle":"2Dゲーム作品","category":"2Dゲーム","year":"2025","image":"assets/work-map.jpg","imageAlt":"見習い地図士と不思議な世界のプレイ動画サムネイル","description":"C言語とDirectX9を使用して制作した2Dゲーム作品。","tools":["C","DirectX9"],"period":"2025/6/30 ～ 2025/9/22","team":"","detail":"2025年6月から9月にかけて制作した2Dゲーム作品です。ゲームの様子は、プレイ動画で紹介しています。","screenshots":[{"src":"assets/map-shot-01.jpg","caption":"タイトル画面"},{"src":"assets/map-shot-02.jpg","caption":"チュートリアル"},{"src":"assets/map-shot-03.jpg","caption":"ゲーム画面1"},{"src":"assets/map-shot-04.jpg","caption":"ゲーム画面2"},{"src":"assets/map-shot-05.jpg","caption":"ランキング"},{"src":"assets/map-shot-06.jpg","caption":"結果画面"}],"video":{"youtubeId":"9B82_kTPxxc","caption":"見習い地図士と不思議な世界 / プレイ動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1tuWMl62xEX0VqR3xQqZHnkmMcXe7kfKW"},{"label":"YouTubeで見る","url":"https://youtu.be/9B82_kTPxxc"}]},{"id":"izayoi-collector","relatedEventId":"","title":"十六夜コレクター","subtitle":"2作目の2Dゲーム作品","category":"2Dゲーム","year":"2025","image":"assets/work-izayoi.jpg","imageAlt":"十六夜コレクターのプレイ動画サムネイル","description":"C言語とDirectX9で制作した、2Dゲーム作品の2作目。","tools":["C","DirectX9"],"period":"2025/10/2 ～ 2025/10/31","team":"","detail":"2025年10月に制作した2Dゲーム作品です。プレイ動画と作品データを公開しています。","screenshots":[{"src":"assets/izayoi-shot-01.jpg","caption":"スクリーンショット1"},{"src":"assets/izayoi-shot-02.jpg","caption":"スクリーンショット2"},{"src":"assets/izayoi-shot-03.jpg","caption":"スクリーンショット3"},{"src":"assets/izayoi-shot-04.jpg","caption":"スクリーンショット4"},{"src":"assets/izayoi-shot-05.jpg","caption":"スクリーンショット5"}],"video":{"youtubeId":"PDFSXxMC6z4","caption":"十六夜コレクター / プレイ動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1s1luAQwW1Wly6N-Ra9-RZrSyvNf_xYp5"},{"label":"YouTubeで見る","url":"https://youtu.be/PDFSXxMC6z4"}]},{"id":"gear-girl","relatedEventId":"","title":"撥条少女","subtitle":"5人チームでの3Dゲーム制作","category":"3Dゲーム","year":"2025","image":"assets/work-geargirl.jpg","imageAlt":"撥条少女のプレイ動画サムネイル","description":"初めて制作した3Dゲーム作品。","tools":["C","DirectX9"],"period":"2025/1/15 ～ 2025/3/19","team":"","detail":"C言語とDirectX9を使用した3Dゲームです。プレイ動画では、アームやギミックが登場するゲーム画面をご覧いただけます。","screenshots":[{"src":"assets/gear-shot-01.jpg","caption":"タイトル画面"},{"src":"assets/gear-shot-02.jpg","caption":"チュートリアル"},{"src":"assets/gear-shot-03.jpg","caption":"アイテム発見"},{"src":"assets/gear-shot-04.jpg","caption":"アイテム取得"},{"src":"assets/gear-shot-05.jpg","caption":"アイテム配置"},{"src":"assets/gear-shot-06.jpg","caption":"会話シーン"},{"src":"assets/gear-shot-07.jpg","caption":"投げるアクション"},{"src":"assets/gear-shot-08.jpg","caption":"エリア表示"},{"src":"assets/gear-shot-09.jpg","caption":"2Pプレイ"},{"src":"assets/gear-shot-10.jpg","caption":"ランキング"}],"video":{"youtubeId":"p8u7Jz-R7Iw","caption":"撥条少女 / プレイ動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/17Ku8LNMrUj245HuN-RsVx44b2mPjsanU"},{"label":"YouTubeで見る","url":"https://youtu.be/p8u7Jz-R7Iw"}]},{"id":"goricat","relatedEventId":"","title":"進め！きんにく！ごりキャット君！","subtitle":"3人チームでの2Dゲーム制作","category":"2Dゲーム","year":"2025","image":"assets/work-goricat.jpg","imageAlt":"進め！きんにく！ごりキャット君！のプレイ動画サムネイル","description":"C言語・DirectX9で制作した2Dゲーム。","tools":["C","DirectX9"],"period":"2025/3/24 ～ 2025/3/26","team":"","detail":"プロテインで猫を強化していく2Dゲームです。プレイ動画では、その様子を紹介しています。","screenshots":[{"src":"assets/goricat-shot-01.jpg","caption":"スクリーンショット1"},{"src":"assets/goricat-shot-02.jpg","caption":"スクリーンショット2"},{"src":"assets/goricat-shot-03.jpg","caption":"スクリーンショット3"},{"src":"assets/goricat-shot-04.jpg","caption":"スクリーンショット4"},{"src":"assets/goricat-shot-05.jpg","caption":"スクリーンショット5"},{"src":"assets/goricat-shot-06.jpg","caption":"スクリーンショット6"}],"video":{"youtubeId":"M9hjYlRG0qI","caption":"進め！きんにく！ごりキャット君！ / プレイ動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1LGjK1nSxxiqTdOPpTo0CNG_2W1_yYju_"},{"label":"YouTubeで見る","url":"https://youtu.be/M9hjYlRG0qI"}]},{"id":"takeru","relatedEventId":"sapporo-game-odyssey","relatedEventLabel":"SAPPORO GAME ODYSSAY 出展","title":"現実逃避だ！タケル君！","subtitle":"初のC++による2Dゲーム","category":"2Dゲーム","year":"2026","image":"assets/work-takeru.jpg","imageAlt":"現実逃避だ！タケル君！のプレイ動画サムネイル","description":"初めてC++を使って制作した2Dゲーム。DirectX9を使用。","tools":["C++","DirectX9"],"period":"2026/5/25 ～ 2026/5/28","team":"","detail":"2026年5月に制作した、初めてC++を使用した2Dゲーム作品です。ゲーム画面と動きをプレイ動画で紹介しています。","screenshots":[{"src":"assets/takeru-shot-01.jpg","caption":"スクリーンショット1"},{"src":"assets/takeru-shot-02.jpg","caption":"スクリーンショット2"},{"src":"assets/takeru-shot-03.jpg","caption":"スクリーンショット3"},{"src":"assets/takeru-shot-04.jpg","caption":"スクリーンショット4"},{"src":"assets/takeru-shot-05.jpg","caption":"スクリーンショット5"}],"video":{"youtubeId":"GLYZmwaaMjU","caption":"現実逃避だ！タケル君！ / プレイ動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1l29CW07WhpXP6jHDhkMvsW7pNBgtpjLI"},{"label":"YouTubeで見る","url":"https://youtu.be/GLYZmwaaMjU"}]},{"id":"gamejam-work","relatedEventId":"sapporo-game-camp","relatedEventLabel":"Game Jam 制作","title":"CROSS VISION","subtitle":"8人チームでの視点切替パズル制作","category":"Game Jam","year":"2026","image":"assets/work-crossvision.jpg","imageAlt":"CROSS VISIONのタイトル画面","description":"SAPPORO GAME CAMP 2026のGame Jamで2日間制作した、視点切替パズルゲーム。","tools":["Unity","C#"],"period":"2026/10/10 ～ 2026/10/11（2日間）","team":"","detail":"SAPPORO GAME CAMP 2026のGame Jam参加作品で、2日間で制作した視点切替パズルです。A/Dキーで移動し、矢印キーでカメラを回すと進む方向が変わります。ドアの近くでSキーを押すと手前へ移動でき、宝箱に触れるとクリアです。担当はアウトゲームまわり（タイトル／リザルト／シーン遷移／フェード／クリア判定）と音響の組み込み、宝箱ギミックなどで、担当スクリプトは11本（ゲーム内で使用8本＋プロト版のみ3本）です。","screenshots":[{"src":"assets/cross-shot-01.jpg","caption":"タイトル画面"},{"src":"assets/cross-shot-02.jpg","caption":"ゲーム開始"},{"src":"assets/cross-shot-03.jpg","caption":"視点切替"},{"src":"assets/cross-shot-04.jpg","caption":"宝箱に到達"},{"src":"assets/cross-shot-05.jpg","caption":"宝箱へ接近"},{"src":"assets/cross-shot-06.jpg","caption":"クリア画面"}],"video":{"youtubeId":"N9NXa1sopA8","caption":"CROSS VISION / 紹介動画"},"links":[{"label":"作品データ","url":"https://drive.google.com/drive/folders/1Cv9eZ7G1_FjhgF5_NCnFQTb_CEEn_rn8"},{"label":"ソースコード（GitHub）","url":"https://github.com/kenchan99oorer/SapporoGameCamp03"},{"label":"YouTubeで見る","url":"https://youtu.be/N9NXa1sopA8"}]},{"id":"mask-tetris","relatedEventId":"global-game-jam","relatedEventLabel":"Global Game Jam 制作","title":"MASK TETRIS","subtitle":"すり抜け即時設置が特徴のテトリス","category":"Game Jam","year":"2026","image":"assets/work-mask.jpg","imageAlt":"MASK TETRISのタイトル画面","description":"Global Game Jam（GGJ Sapporo 2026）で制作したテトリス系ゲーム。Eキーでブロックをすり抜けて即時設置できる独自ギミックが特徴。","tools":["C言語","DirectX"],"period":"2026/01/30 ～ 2026/02/01（2日間）","team":"","detail":"Global Game Jam（GGJ Sapporo 2026）で2日間で制作したテトリス系ゲームです。独自ギミックはEキーの「すり抜け即時設置」。操作は、矢印キーで移動、SPACE／左SHIFTで回転、TABでホールド（ミノ保持）、Eですり抜け即時設置で、ゲームオーバー後にランキングが表示されます。担当は表示・管理まわり＋計算基盤で、9組18ファイル・計4,026行（BackGroundManager、HoldController、MessageLog、NextNoticeController、StageMinoManager、TitleLogoController、character、mathUtil、mino）を実装しました。","screenshots":[{"src":"assets/mask-shot-01.jpg","caption":"タイトル画面（カラフルな「MASK TETRIS」ロゴと PRESS START BUTTON、GGJ SAP 2026 表記）"},{"src":"assets/mask-shot-02.jpg","caption":"プレイ序盤（スコア500、Hold は空、Next 表示と仮面のキャラクター）"},{"src":"assets/mask-shot-03.jpg","caption":"プレイ中（スコア1000、赤いミノが落下中、下段にブロックが積み上がり始める）"},{"src":"assets/mask-shot-04.jpg","caption":"ホールド使用中（Hold にオレンジのミノを保持、スコア1000）"},{"src":"assets/mask-shot-05.jpg","caption":"プレイ終盤寄り（ブロックが高く積み上がった状態、スコア1000）"},{"src":"assets/mask-shot-06.jpg","caption":"ゲームオーバー後のランキング画面（スコア一覧 50500 / 33000 / 24500 / 20000 / 20000）"}],"links":[]},{"id":"drift-race","relatedEventId":"","title":"ドリフトレース（仮）","subtitle":"ツインスティックで滑らせるドリフトレース","category":"Webゲーム","year":"2026","image":"assets/work-drift.jpg","imageAlt":"ドリフトレース（仮）のゲーム画面","description":"ブラウザで遊べるドリフト特化のレースゲーム。Inertial Drift風のツインスティック操作で車を滑らせ、3つのコースでタイムアタックに挑む。初の完全バイブコーディングによる一人制作。","tools":["C++","SDL2","WebAssembly"],"period":"2026/10/29 ～ 2026/10/31","team":"1名","detail":"学校課題として制作したWebブラウザ向けレースゲームです。C++／SDL2で開発し、WebAssemblyでブラウザ動作に対応。Inertial Driftを参考にしたツインスティック式のドリフト操作、鈴鹿・Flow・Coastの3コース、特性の異なる3車種、ミニマップやラップタイム表示を実装しました。本作は一人制作で、初めての完全バイブコーディング（AIとの対話のみで組み上げる制作手法）への挑戦でした。制作を通して、プロンプトを組む大変さと、考えを言語化して壁打ちを繰り返すことの大切さを学びました。","screenshots":[{"src":"assets/drift-shot-01.jpg","caption":"ゲーム画面（コース走行中、ミニマップとラップタイム表示）"},{"src":"assets/drift-shot-02.jpg","caption":"スタート地点（ゲートと車両、コースマップ表示）"}],"links":[{"label":"ブラウザで遊ぶ","url":"https://tenmasaito.github.io/racegame/"},{"label":"ソースコード（GitHub）","url":"https://github.com/TenmaSaito/ge-i26-racegame-saito"}]}],"sourceProjects":[{"label":"ConnectingVolteccer","url":"https://github.com/TenmaSaito/ConnectingVolteccer"},{"label":"cpp_TKG","url":"https://github.com/TenmaSaito/cpp_TKG"},{"label":"2DActionGame","url":"https://github.com/TenmaSaito/2DActionGame"},{"label":"PunchingHomerun","url":"https://github.com/TenmaSaito/PunchingHomerun"},{"label":"GearGirl","url":"https://github.com/TenmaSaito/GearGirl"},{"label":"XmaStealth","url":"https://github.com/TenmaSaito/XmaStealth"},{"label":"SapporoGameCamp03","url":"https://github.com/kenchan99oorer/SapporoGameCamp03"}],"internships":[{"company":"バンダイナムコスタジオ","period":"参加期間：10日間","title":"C++ / WebAssembly / Android","description":"C++で書いたコードをWebAssembly化し、ブラウザーで動作するよう制作しました。","role":"基底クラスの作成、Androidへの移植。","learnings":["AIを用いたコーディングはプロンプトを正しく渡し、壁打ちを繰り返すことで既に実用的な物を出力すると知った。","GitHub Actionsを用いたCIはコードの確認を自動で行う為、非常に有用だと知った。","Dockerを用いた仮想コンテナ開発による環境統一は、動作のブレが起きないため大切だと知った。"]}],"skillGroups":[{"title":"プログラミング言語","subtitle":"LANGUAGES","items":[{"name":"C / C++","category":"LANGUAGE","experience":"1年半","expSegments":9,"maxSegments":12,"description":"ゲーム制作の主力言語。掲載作品の多くをC / C++とDirectX9で制作しています。","env":"使用IDE：Visual Studio 2019 / VS Code","projects":"DirectX9","languages":["C","C++"]},{"name":"C#","category":"LANGUAGE","experience":"1年","expSegments":6,"maxSegments":12,"description":"Unityでのゲーム制作に使用。ゲームジャムでもC#で開発しました。","env":"使用IDE：Visual Studio 2019","projects":"Unity","languages":["C#"]}]},{"title":"ゲームエンジン","subtitle":"GAMEENGINE","items":[{"name":"Unity","category":"GAMEENGINE","experience":"1年","expSegments":6,"maxSegments":12,"description":"ゲーム制作に必要な操作(オブジェクト配置、スクリプト作成やShader Lab等)はある程度可能で、何本かゲームを作成した経験があります。","env":"使用バージョン：Unity 5 / Unity 2022.3"},{"name":"Unreal Engine","category":"GAMEENGINE","experience":"半年未満","expSegments":2,"maxSegments":12,"description":"絶賛勉強中です。現在はブループリントによる開発勉強ですが、将来的にはVerse言語での開発の勉強をする予定です。","env":"使用バージョン：UE5"}]},{"title":"ツール","subtitle":"TOOL","items":[{"name":"GitHub","category":"TOOL","experience":"1年半","expSegments":9,"maxSegments":12,"description":"ゲーム制作時に使用するバージョン管理ツール。GitHub ActionsによるPRチェックも勉強中です。","env":"使用App：GitHub Desktop/TortoiseGit"}]}],"events":[{"id":"sapporo-game-odyssey","title":"SAPPORO GAME ODYSSAY","type":"出展","depth":"−350m","description":"札幌市地下歩行空間にて、C++で初めて制作した2Dゲームを展示。","url":"https://www.sapporo-game-odyssey.jp/","relatedWorkId":"takeru","jumpLabel":"出展作品を見る"},{"id":"sapporo-game-camp","title":"SAPPORO GAME CAMP","type":"参加","depth":"−370m","description":"2026年度Game Jamに参加。Unity, C#を用いて2日でゲームを作成。","url":"https://sapporo-game-camp.com/2026/","relatedWorkId":"gamejam-work","jumpLabel":"Game Jam作品を見る"},{"id":"global-game-jam","title":"Global Game Jam","type":"参加","depth":"−390m","description":"2026年度Global Game Jamに参加。C言語を用いて2日で2Dゲームを制作","url":"https://www.infiniteloop.co.jp/pr-blog/2026/01/global-game-jam-sapporo-2026/","relatedWorkId":"mask-tetris","jumpLabel":"Game Jam作品を見る"}]};
 
 /* ================================================================
    以下、描画エンジン部分（通常は編集不要）
