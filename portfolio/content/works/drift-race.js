@@ -1,5 +1,5 @@
 // ============================================================
-// 作品データ：『ドリフトレース（仮）』
+// 作品データ：『ARC FLOW DRIFT』
 // このファイルは、この作品ひとつぶんのデータです。
 //
 // 【編集のしかた（GitHubの画面でOK）】
@@ -20,12 +20,12 @@ window.AQUART_CONTENT.gamesById = window.AQUART_CONTENT.gamesById || {};
 window.AQUART_CONTENT.gamesById["drift-race"] = {
   "id": "drift-race",
   "relatedEventId": "",
-  "title": "ドリフトレース（仮）",
+  "title": "ARC FLOW DRIFT",
   "subtitle": "ツインスティックで滑らせるドリフトレース",
   "category": "Webゲーム",
   "year": "2026",
   "image": "assets/work-drift.jpg",
-  "imageAlt": "ドリフトレース（仮）のゲーム画面",
+  "imageAlt": "ARC FLOW DRIFTのゲーム画面",
   "description": "ブラウザで遊べるドリフト特化のレースゲーム。Inertial Drift風のツインスティック操作で車を滑らせ、3つのコースでタイムアタックに挑む。初の完全バイブコーディングによる一人制作。",
   "tools": [
     "C++",
