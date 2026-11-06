@@ -223,8 +223,8 @@ html[data-theme="dark"] .wave-divider path{ fill:rgba(95,216,239,.16); } html[da
 @media (max-width:860px){ .hero-grid{ grid-template-columns:1fr; } .hero-whale{ max-width:340px; margin:0 auto; } }
 .hero .kicker{ font-family:var(--font-display); font-weight:600; font-size:12.5px; letter-spacing:.3em; color:var(--cyan); margin:0 0 18px; display:flex; align-items:center; gap:14px; }
 .hero .kicker::before{ content:""; width:44px; height:1px; background:var(--cyan); }
-.hero .brand-line{ font-family:var(--font-display); font-weight:600; font-size:clamp(16px,2.6vw,22px); letter-spacing:.26em; color:var(--aqua); margin:0 0 10px; }
-.hero h1{ font-size:clamp(38px,7.4vw,68px); line-height:1.32; margin:0; font-weight:900; color:var(--hero-title); text-shadow:0 2px 0 rgba(255,255,255,.35); }
+.hero .brand-line{ font-family:var(--font-display); font-weight:600; font-size:clamp(19px,3vw,27px); letter-spacing:.34em; color:var(--aqua); margin:0 0 14px; }
+.hero h1{ font-size:clamp(48px,8vw,84px); line-height:1.08; letter-spacing:.005em; margin:0; font-weight:900; color:var(--hero-title); text-shadow:0 2px 0 rgba(255,255,255,.35); }
 html[data-theme="dark"] .hero h1{ text-shadow:0 0 28px rgba(47,188,217,.22); }
 .hero h1 .wave-letter{ display:inline-block; animation:letter-float 4.6s ease-in-out infinite; animation-delay:calc(var(--i)*.14s); }
 @keyframes letter-float{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-5px); } }
@@ -271,7 +271,7 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
   position:absolute; z-index:2; top:12px; left:12px;
   font-size:12px; font-weight:900; letter-spacing:.14em;
   color:#043947; background:var(--accent-grad);
-  padding:8px 14px; border-radius:8px; box-shadow:0 4px 12px rgba(0,150,190,.22);
+  padding:8px 18px 8px 14px; border-radius:3px; box-shadow:0 4px 12px rgba(0,150,190,.22);
 }
 .hero-featured-body{ display:flex; flex-direction:column; justify-content:center; gap:9px; padding:26px 28px 28px; min-width:0; }
 .hero-featured-cap{ font-family:var(--font-display); font-weight:500; font-size:11px; letter-spacing:.22em; color:var(--aqua); margin:0; }
@@ -290,6 +290,19 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
   .hero-featured-media{ aspect-ratio:16/9; min-height:0; }
   .hero-featured-body{ padding:22px 22px 24px; }
 }
+/* ヒーロー端の編集誌的サイドキャプション（縦書き・mono） */
+.hero-side-cap{
+  position:absolute; top:50%; right:22px; transform:translateY(-50%); z-index:3;
+  writing-mode:vertical-rl; text-orientation:mixed;
+  display:flex; align-items:center; gap:14px;
+  font-family:var(--font-mono); font-size:10.5px; font-weight:500; letter-spacing:.34em;
+  color:var(--muted); white-space:nowrap; pointer-events:none;
+}
+.hero-side-cap::before{ content:""; width:1px; height:56px; background:linear-gradient(180deg, transparent, var(--aqua), transparent); }
+.hero-side-cap::after{ content:""; width:1px; height:56px; background:linear-gradient(180deg, transparent, var(--aqua), transparent); }
+.hero-side-cap b{ font-weight:500; color:var(--aqua); }
+@media (max-width:1180px){ .hero-side-cap{ right:10px; } }
+@media (max-width:900px){ .hero-side-cap{ display:none; } }
 .hero-scroll{ margin-top:40px; display:flex; align-items:center; gap:12px; color:var(--muted); font-size:11px; letter-spacing:.26em; font-family:var(--font-display); font-weight:500; }
 .hero-scroll .line{ width:1px; height:44px; background:linear-gradient(180deg, var(--cyan), transparent); animation:scroll-drip 2.2s ease-in-out infinite; transform-origin:top; }
 @keyframes scroll-drip{ 0%{ transform:scaleY(.2); opacity:.3; } 55%{ transform:scaleY(1); opacity:1; } 100%{ transform:scaleY(1); opacity:.25; } }
@@ -367,6 +380,7 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
   <!-- ================= HERO ================= -->
   <section class="hero" style="padding-top:130px;">
     <div class="rays" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <p class="hero-side-cap" aria-hidden="true"><span>PORTFOLIO — GAME PROGRAMMER</span><b>AQUART / 2026</b></p>
     <div class="wrap">
       <div class="hero-grid">
         <div>
@@ -561,7 +575,7 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
   position:absolute; z-index:3; top:12px; left:12px;
   font-size:12px; font-weight:900; letter-spacing:.14em;
   color:#043947; background:var(--accent-grad); border:none;
-  padding:8px 14px; border-radius:8px; box-shadow:0 4px 12px rgba(0,150,190,.22);
+  padding:8px 18px 8px 14px; border-radius:3px; box-shadow:0 4px 12px rgba(0,150,190,.22);
 }
 .work-card--featured .stage-badge{ top:52px; }
 @media (max-width:760px){
@@ -584,14 +598,40 @@ html[data-theme="dark"] .hero-whale .whale-stage{ background:radial-gradient(cir
 }
 .cat-badge{
   position:absolute; z-index:2; top:12px; right:12px;
-  font-family:var(--font-mono); font-size:11px; font-weight:500; letter-spacing:.1em; padding:6px 11px; border-radius:6px;
+  font-family:var(--font-mono); font-size:11px; font-weight:500; letter-spacing:.1em; padding:6px 15px 6px 11px; border-radius:3px;
   background:#00a8c8; color:#fff; box-shadow:0 2px 8px rgba(0,150,184,.2);
 }
+/* ---------- 折り紙ラベル（paper-fold）：右上を折った造形 ---------- */
+.featured-badge, .hero-featured-badge, .cat-badge{
+  clip-path:polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 0 100%);
+}
+.featured-badge::after, .hero-featured-badge::after, .cat-badge::after{
+  content:""; position:absolute; top:0; right:0; width:11px; height:11px;
+  background:linear-gradient(135deg, rgba(255,255,255,.28) 0%, rgba(255,255,255,.62) 100%);
+  clip-path:polygon(0 0, 100% 100%, 0 100%);
+  box-shadow:-1px 1px 2px rgba(4,57,71,.18);
+}
+.cat-badge::after{ background:linear-gradient(135deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,.55) 100%); }
 .work-body{ padding:16px 18px 18px; display:flex; flex-direction:column; gap:7px; flex:1; }
 .work-body h3{ margin:0; font-size:17px; line-height:1.45; font-weight:900; }
 .work-body .subtitle{ margin:0; font-size:11.5px; letter-spacing:.08em; color:var(--aqua); font-weight:700; }
 .work-body .desc{ margin:0; font-size:13.5px; line-height:1.65; color:var(--body-text); }
 .work-body .period{ margin:0; font-family:var(--font-mono); font-size:11.5px; color:var(--muted); font-weight:500; letter-spacing:.05em; }
+/* ---------- 編集誌リストDNA：通し番号＋ヘアラインのメタ行 ---------- */
+.work-card-top{ display:flex; align-items:center; gap:10px; margin:0 0 2px; }
+.work-index{ font-family:var(--font-mono); font-size:11px; font-weight:700; letter-spacing:.18em; color:var(--aqua); white-space:nowrap; }
+.work-index b{ font-size:15px; font-weight:700; color:var(--ink); }
+.work-card-top-rule{ flex:1; height:1px; background:linear-gradient(90deg, var(--hairline), transparent); }
+.work-index-label{ font-family:var(--font-mono); font-size:10px; font-weight:500; letter-spacing:.16em; color:var(--muted); white-space:nowrap; }
+.work-meta{ margin-top:auto; padding-top:4px; }
+.work-meta::before{ content:""; display:block; height:1px; background:var(--hairline); margin:6px 0 2px; }
+.work-meta-row{ display:flex; align-items:baseline; justify-content:space-between; gap:14px; padding:7px 0; border-bottom:1px solid var(--hairline); }
+.work-meta-row:last-child{ border-bottom:none; }
+.work-meta-label{ font-family:var(--font-mono); font-size:10px; font-weight:500; letter-spacing:.2em; color:var(--muted); flex:none; }
+.work-meta-value{ font-family:var(--font-mono); font-size:11.5px; font-weight:500; letter-spacing:.04em; color:var(--ink); text-align:right; overflow-wrap:anywhere; }
+.work-card--featured .work-index{ font-size:12px; }
+.work-card--featured .work-index b{ font-size:19px; }
+.work-card--featured .work-meta-value{ font-size:12.5px; }
 .tags{ display:flex; flex-wrap:wrap; gap:7px; margin-top:auto; padding-top:6px; }
 .tag{ font-family:var(--font-mono); font-size:11.5px; font-weight:500; letter-spacing:.05em; color:var(--cyan); border:1px solid var(--card-line); background:var(--tag-bg); padding:4px 10px; border-radius:6px; }
 .work-actions{ display:flex; gap:9px; padding-top:8px; flex-wrap:wrap; }
@@ -1098,7 +1138,7 @@ function startApp(CONFIG){
   function renderWorks(){
     visibleGames = CONFIG.games.filter(function(g){ return currentCategory === "すべて" || g.category === currentCategory; });
     $("workCount").textContent = visibleGames.length + "件の作品を表示中";
-    $("worksGrid").innerHTML = visibleGames.map(function(g){
+    $("worksGrid").innerHTML = visibleGames.map(function(g, vi){
       var idx = CONFIG.games.indexOf(g);
       var ev = g.relatedEventId ? getEventById(g.relatedEventId) : null;
       var mediaInner = g.image
@@ -1106,7 +1146,16 @@ function startApp(CONFIG){
         : '<span class="work-placeholder"><b>GAME VISUAL</b><span>画像準備中</span></span>';
       var catLabel = g.year ? esc(g.category) + " / " + esc(g.year) : esc(g.category);
       var pendingMedia = g.pending ? '<span class="pending-badge">' + esc(g.pendingLabel || "詳細準備中") + "</span>" : "";
+      var displayNo = String(vi + 1).padStart(2, "0");
+      var totalNo = String(visibleGames.length).padStart(2, "0");
       var periodLine = g.period ? '<p class="period">制作期間：' + esc(g.period) + (g.team ? "　／　" + esc(g.team) : "") + "</p>" : "";
+      var periodVal = g.period ? esc(g.period) + (g.team ? " ／ " + esc(g.team) : "") : "";
+      var indexHtml = '<div class="work-card-top" aria-hidden="true"><span class="work-index">No. <b>' + displayNo + '</b></span><span class="work-card-top-rule"></span><span class="work-index-label">WORK ' + displayNo + " / " + totalNo + "</span></div>";
+      var metaHtml = '<div class="work-meta">' +
+        '<div class="work-meta-row"><span class="work-meta-label">CATEGORY</span><span class="work-meta-value">' + catLabel + "</span></div>" +
+        (periodVal ? '<div class="work-meta-row"><span class="work-meta-label">PERIOD</span><span class="work-meta-value">' + periodVal + "</span></div>" : "") +
+        (g.tools.length ? '<div class="work-meta-row"><span class="work-meta-label">TECH</span><span class="work-meta-value">' + g.tools.map(function(t){ return esc(t); }).join(" / ") + "</span></div>" : "") +
+        "</div>";
       var eventBadge = ev ? '<button type="button" class="event-badge" data-jump-event="' + esc(ev.id) + '" aria-label="' + esc(ev.title) + 'の活動ログへジャンプ"><span class="jump-arrow" aria-hidden="true">↓</span>' + esc(g.relatedEventLabel || ev.title) + "</button>" : "";
       var ytLink = g.links.filter(function(l){ return l.label.indexOf("YouTube") >= 0; })[0];
       var dataLink = g.links.filter(function(l){ return l.label.indexOf("YouTube") < 0; })[0];
@@ -1121,11 +1170,10 @@ function startApp(CONFIG){
         '<button type="button" class="work-media" data-detail="' + idx + '" aria-label="' + esc(g.title) + 'の詳細を開く">' + mediaInner + featuredBadge +
         '<span class="stage-badge">' + stageLabel(idx) + '</span>' +
         '<span class="cat-badge">' + catLabel + "</span>" + pendingMedia + "</button>" +
-        '<div class="work-body"><h3><button type="button" class="work-title-btn" data-detail="' + idx + '">' + esc(g.title) + '</button></h3><p class="subtitle">' + esc(g.subtitle) + "</p>" +
+        '<div class="work-body">' + indexHtml + '<h3><button type="button" class="work-title-btn" data-detail="' + idx + '">' + esc(g.title) + '</button></h3><p class="subtitle">' + esc(g.subtitle) + "</p>" +
         '<p class="desc">' + esc(g.description) + '</p>' +
-        periodLine +
         (eventBadge ? '<div>' + eventBadge + "</div>" : "") +
-        '<div class="tags">' + g.tools.map(function(t){ return '<span class="tag">' + esc(t) + "</span>"; }).join("") + "</div>" +
+        metaHtml +
         actionsHtml +
         "</div></article>";
     }).join("") || '<p style="color:var(--muted)">該当する作品はまだありません。</p>';
