@@ -35,5 +35,6 @@ window.AQUART_CONTENT.gamesOrder = [
   "takeru",
   "gamejam-work",
   "mask-tetris",
-  "drift-race"
+  "drift-race",
+  "bakushoku-triangle"
 ];
